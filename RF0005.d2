@@ -1,0 +1,238 @@
+Inventory: {
+  shape: class
+  +inventory_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +price: DECIMAL(10,2)
+  +quantity: INT
+  +seller_description: NVARCHAR(MAX)
+  +condition_rating: NVARCHAR(20)
+  +in_sale: BIT
+  +sale_discount: DECIMAL(5,2)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+ShoppingCart: {
+  shape: class
+  +cart_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+CartItem: {
+  shape: class
+  +cart_item_id: UNIQUEIDENTIFIER
+  +cart_id: UNIQUEIDENTIFIER
+  +inventory_id: UNIQUEIDENTIFIER
+  +quantity: INT
+  +added_at: DATETIME2
+}
+
+OrderStatus: {
+  shape: class
+  +status_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(50)
+  +description: NVARCHAR(MAX)
+}
+
+Order: {
+  shape: class
+  +order_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +buyer_user_id: UNIQUEIDENTIFIER
+  +status_id: UNIQUEIDENTIFIER
+  +shipping_address: NVARCHAR(MAX)
+  +total_price: DECIMAL(10,2)
+  +currency: NVARCHAR(3)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+OrderItem: {
+  shape: class
+  +order_item_id: UNIQUEIDENTIFIER
+  +order_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +inventory_id: UNIQUEIDENTIFIER
+  +quantity: INT
+  +price_at_purchase: DECIMAL(10,2)
+  +discount_percentage: DECIMAL(5,2)
+  +created_at: DATETIME2
+}
+
+OrderStatusHistory: {
+  shape: class
+  +history_id: UNIQUEIDENTIFIER
+  +order_id: UNIQUEIDENTIFIER
+  +status_id: UNIQUEIDENTIFIER
+  +changed_by_user_id: UNIQUEIDENTIFIER
+  +changed_at: DATETIME2
+  +notes: NVARCHAR(MAX)
+}
+
+Invoice: {
+  shape: class
+  +invoice_id: UNIQUEIDENTIFIER
+  +order_id: UNIQUEIDENTIFIER
+  +total_amount: DECIMAL(10,2)
+  +currency: NVARCHAR(3)
+  +payment_details: NVARCHAR(MAX)
+  +status: NVARCHAR(50)
+  +tracking_code: NVARCHAR(100)
+  +created_at: DATETIME2
+  +paid_at: DATETIME2
+}
+
+Promotion: {
+  shape: class
+  +promotion_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +discount_percentage: DECIMAL(5,2)
+  +minimum_order_value: DECIMAL(10,2)
+  +start_date: DATETIME2
+  +end_date: DATETIME2
+  +is_active: BIT
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+PromotionCondition: {
+  shape: class
+  +condition_id: UNIQUEIDENTIFIER
+  +promotion_id: UNIQUEIDENTIFIER
+  +condition_type: NVARCHAR(50)
+  +condition_value: NVARCHAR(255)
+  +created_at: DATETIME2
+}
+
+InventoryPromotion: {
+  shape: class
+  +inventory_promotion_id: UNIQUEIDENTIFIER
+  +inventory_id: UNIQUEIDENTIFIER
+  +promotion_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Rating: {
+  shape: class
+  +rating_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +value: DECIMAL(3,2)
+  +comment: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Conversation: {
+  shape: class
+  +conversation_id: UNIQUEIDENTIFIER
+  +order_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+  +closed_at: DATETIME2
+}
+
+User -- Inventory: vende {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- Inventory: disponibilizado como {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- ShoppingCart: possui {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+ShoppingCart -- CartItem: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Inventory -- CartItem: adicionado em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Order: compra {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Order: vende {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+OrderStatus -- Order: define estado {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Order -- OrderItem: inclui {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Inventory -- OrderItem: referencia {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- OrderItem: se refere a {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Order -- OrderStatusHistory: tem histórico {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+OrderStatus -- OrderStatusHistory: registrado em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Order -- Invoice: faturado por {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+User -- Promotion: cria {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Promotion -- PromotionCondition: tem condições {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Promotion -- InventoryPromotion: aplicada via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Inventory -- InventoryPromotion: tem promoção {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Order -- Conversation: tem chat {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+User -- Rating: avalia {
+  source-arrowhead: 1
+  target-arrowhead: *
+}

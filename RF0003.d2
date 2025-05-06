@@ -1,0 +1,175 @@
+Artist: {
+  shape: class
+  +artist_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Alias: {
+  shape: class
+  +alias_id: UNIQUEIDENTIFIER
+  +artist_id: UNIQUEIDENTIFIER
+  +alias: NVARCHAR(255)
+  +created_at: DATETIME2
+}
+
+Genre: {
+  shape: class
+  +genre_id: UNIQUEIDENTIFIER
+  +genre: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+LabelTB: {
+  shape: class
+  +label_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+  +location: NVARCHAR(255)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Format: {
+  shape: class
+  +format_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+}
+
+MasterRelease: {
+  shape: class
+  +master_release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+  +year: INT
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Release: {
+  shape: class
+  +release_id: UNIQUEIDENTIFIER
+  +master_release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+  +format_id: UNIQUEIDENTIFIER
+  +country_fabrication: NVARCHAR(100)
+  +year_fabrication: INT
+  +label_id: UNIQUEIDENTIFIER
+  +barcode: NVARCHAR(100)
+  +release_notes: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+ArtistRelease: {
+  shape: class
+  +artist_release_id: UNIQUEIDENTIFIER
+  +artist_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +role: NVARCHAR(100)
+  +role_order: INT
+  +created_at: DATETIME2
+}
+
+Version: {
+  shape: class
+  +version_id: UNIQUEIDENTIFIER
+  +item_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +field_changed: NVARCHAR(100)
+  +old_value: NVARCHAR(MAX)
+  +new_value: NVARCHAR(MAX)
+  +user_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+GenreMasterRelease: {
+  shape: class
+  +genre_master_release_id: UNIQUEIDENTIFIER
+  +master_release_id: UNIQUEIDENTIFIER
+  +genre_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+GenreRelease: {
+  shape: class
+  +genre_release_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +genre_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+GenreArtist: {
+  shape: class
+  +genre_artist_id: UNIQUEIDENTIFIER
+  +artist_id: UNIQUEIDENTIFIER
+  +genre_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Artist -- Alias: tem {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Artist -- GenreArtist: categorizado por {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Genre -- GenreArtist: classifica {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+MasterRelease -- GenreMasterRelease: categorizado por {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Genre -- GenreMasterRelease: classifica {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- GenreRelease: categorizado por {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Genre -- GenreRelease: classifica {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+MasterRelease -- Release: tem versões {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+LabelTB -- Release: produz {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+}
+
+Format -- Release: apresentado em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Artist -- ArtistRelease: participa em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- ArtistRelease: inclui {
+  source-arrowhead: 1
+  target-arrowhead: *
+}

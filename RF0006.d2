@@ -1,0 +1,158 @@
+Group: {
+  shape: class
+  +group_id: UNIQUEIDENTIFIER
+  +creator_user_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +is_public: BIT
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+  +active: BIT
+}
+
+GroupRole: {
+  shape: class
+  +group_role_id: UNIQUEIDENTIFIER
+  +group_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(50)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+}
+
+GroupMember: {
+  shape: class
+  +group_member_id: UNIQUEIDENTIFIER
+  +group_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +group_role_id: UNIQUEIDENTIFIER
+  +joined_at: DATETIME2
+}
+
+Rules: {
+  shape: class
+  +rules_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +action: NVARCHAR(255)
+  +created_at: DATETIME2
+}
+
+GroupRulesRoles: {
+  shape: class
+  +group_rules_id: UNIQUEIDENTIFIER
+  +group_role_id: UNIQUEIDENTIFIER
+  +rules_id: UNIQUEIDENTIFIER
+  +is_allowed: BIT
+  +created_at: DATETIME2
+}
+
+Post: {
+  shape: class
+  +post_id: UNIQUEIDENTIFIER
+  +group_id: UNIQUEIDENTIFIER
+  +creator_user_id: UNIQUEIDENTIFIER
+  +title: NVARCHAR(255)
+  +body: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Comment: {
+  shape: class
+  +comment_id: UNIQUEIDENTIFIER
+  +post_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +content: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Follow: {
+  shape: class
+  +follow_id: UNIQUEIDENTIFIER
+  +follower_user_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Message: {
+  shape: class
+  +message_id: UNIQUEIDENTIFIER
+  +conversation_id: UNIQUEIDENTIFIER
+  +sender_user_id: UNIQUEIDENTIFIER
+  +content: NVARCHAR(MAX)
+  +sent_at: DATETIME2
+  +is_read: BIT
+  +read_at: DATETIME2
+}
+
+User -- Group: cria {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Group -- GroupRole: define {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Group -- GroupMember: tem {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- GroupMember: participa via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+GroupRole -- GroupMember: atribuído a {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+GroupRole -- GroupRulesRoles: tem permissões {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Rules -- GroupRulesRoles: aplicada via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Group -- Post: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Post: cria {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Post -- Comment: tem {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Comment: cria {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Follow: segue {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Message: envia {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Conversation -- Message: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+}

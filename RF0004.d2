@@ -1,0 +1,109 @@
+Collection: {
+  shape: class
+  +collection_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+CollectionRelease: {
+  shape: class
+  +collection_release_id: UNIQUEIDENTIFIER
+  +collection_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +user_notes: NVARCHAR(MAX)
+  +created_at: DATETIME2
+}
+
+Tag: {
+  shape: class
+  +tag_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +created_at: DATETIME2
+}
+
+TagRelationship: {
+  shape: class
+  +tag_relationship_id: UNIQUEIDENTIFIER
+  +tag_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Folder: {
+  shape: class
+  +folder_id: UNIQUEIDENTIFIER
+  +collection_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +parent_folder_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+CollectionReleaseFolder: {
+  shape: class
+  +collection_release_folder_id: UNIQUEIDENTIFIER
+  +collection_release_id: UNIQUEIDENTIFIER
+  +folder_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+User: {
+  shape: class
+  +user_id: UNIQUEIDENTIFIER
+  +username: NVARCHAR(50)
+}
+
+Release: {
+  shape: class
+  +release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+}
+
+User -- Collection: possui {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Collection -- CollectionRelease: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- CollectionRelease: incluído em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Tag -- TagRelationship: aplicada via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Collection -- Folder: organizada em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Folder -- Folder: contém sub-pastas {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+}
+
+CollectionRelease -- CollectionReleaseFolder: categorizado em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Folder -- CollectionReleaseFolder: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+CollectionRelease -- TagRelationship: etiquetado via {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}

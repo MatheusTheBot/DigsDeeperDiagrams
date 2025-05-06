@@ -1,0 +1,165 @@
+User: {
+  shape: class
+  +user_id: UNIQUEIDENTIFIER
+  +username: NVARCHAR(50)
+  +email: NVARCHAR(100)
+  +profile_picture: NVARCHAR(255)
+}
+
+Release: {
+  shape: class
+  +release_id: UNIQUEIDENTIFIER
+  +master_release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +format_id: UNIQUEIDENTIFIER
+  +country_fabrication: NVARCHAR(100)
+  +year_fabrication: INT
+  +label_id: UNIQUEIDENTIFIER
+  +barcode: NVARCHAR(100)
+}
+
+MasterRelease: {
+  shape: class
+  +master_release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +year: INT
+}
+
+Artist: {
+  shape: class
+  +artist_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+}
+
+Genre: {
+  shape: class
+  +genre_id: UNIQUEIDENTIFIER
+  +genre: NVARCHAR(100)
+}
+
+LabelTB: {
+  shape: class
+  +label_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +location: NVARCHAR(255)
+}
+
+Format: {
+  shape: class
+  +format_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+}
+
+Collection: {
+  shape: class
+  +collection_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+  +description: NVARCHAR(MAX)
+}
+
+Inventory: {
+  shape: class
+  +inventory_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +price: DECIMAL(10,2)
+  +condition_rating: NVARCHAR(20)
+}
+
+Wishlist: {
+  shape: class
+  +wishlist_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+}
+
+Rating: {
+  shape: class
+  +rating_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +value: DECIMAL(3,2)
+}
+
+User -- Collection: possui {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Inventory: vende {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Wishlist: deseja {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Rating: avalia {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+MasterRelease -- Release: tem versões {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Artist -- ArtistRelease: participa em {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+Release -- ArtistRelease: inclui {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+Genre -- GenreRelease: classifica {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+Release -- GenreRelease: categorizado por {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+LabelTB -- Release: produz {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Format -- Release: apresentado em {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- Inventory: disponibilizado como {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- Wishlist: desejado como {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- CollectionRelease: incluído em {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+Collection -- CollectionRelease: contém {
+  source-arrowhead: 1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}

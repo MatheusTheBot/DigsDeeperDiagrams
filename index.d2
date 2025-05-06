@@ -1,0 +1,63 @@
+User: {
+  shape: class
+  +user_id: UNIQUEIDENTIFIER
+  +username: NVARCHAR(50)
+  +email: NVARCHAR(100)
+  +password_hash: NVARCHAR(255)
+  +profile_picture: NVARCHAR(255)
+  +preferred_currency: NVARCHAR(3)
+  +shipping_address: NVARCHAR(MAX)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+  +last_login: DATETIME2
+}
+
+UserRole: {
+  shape: class
+  +role_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(50)
+  +description: NVARCHAR(MAX)
+  +created_at: DATETIME2
+}
+
+UserRoleAssignment: {
+  shape: class
+  +assignment_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +role_id: UNIQUEIDENTIFIER
+  +assigned_at: DATETIME2
+}
+
+User -- UserRoleAssignment: tem {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+UserRole -- UserRoleAssignment: atribuído a {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- User: created by {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+User -- User: updated by {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+User -- UserRole: created by {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}
+
+User -- UserRoleAssignment: assigned by {
+  source-arrowhead: 0..1
+  target-arrowhead: *
+  style.stroke-dash: 3
+}

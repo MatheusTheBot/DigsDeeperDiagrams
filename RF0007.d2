@@ -1,0 +1,134 @@
+User: {
+  shape: class
+  +user_id: UNIQUEIDENTIFIER
+  +username: NVARCHAR(50)
+  +email: NVARCHAR(100)
+}
+
+Inventory: {
+  shape: class
+  +inventory_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +release_id: UNIQUEIDENTIFIER
+  +price: DECIMAL(10,2)
+  +quantity: INT
+  +seller_description: NVARCHAR(MAX)
+  +condition_rating: NVARCHAR(20)
+  +in_sale: BIT
+  +sale_discount: DECIMAL(5,2)
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+Release: {
+  shape: class
+  +release_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(255)
+}
+
+Promotion: {
+  shape: class
+  +promotion_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +name: NVARCHAR(100)
+  +description: NVARCHAR(MAX)
+  +discount_percentage: DECIMAL(5,2)
+  +minimum_order_value: DECIMAL(10,2)
+  +start_date: DATETIME2
+  +end_date: DATETIME2
+  +is_active: BIT
+  +created_at: DATETIME2
+  +updated_at: DATETIME2
+}
+
+PromotionCondition: {
+  shape: class
+  +condition_id: UNIQUEIDENTIFIER
+  +promotion_id: UNIQUEIDENTIFIER
+  +condition_type: NVARCHAR(50)
+  +condition_value: NVARCHAR(255)
+  +created_at: DATETIME2
+}
+
+InventoryPromotion: {
+  shape: class
+  +inventory_promotion_id: UNIQUEIDENTIFIER
+  +inventory_id: UNIQUEIDENTIFIER
+  +promotion_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Rating: {
+  shape: class
+  +rating_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +user_id: UNIQUEIDENTIFIER
+  +value: DECIMAL(3,2)
+  +comment: NVARCHAR(MAX)
+  +created_at: DATETIME2
+}
+
+Follow: {
+  shape: class
+  +follow_id: UNIQUEIDENTIFIER
+  +follower_user_id: UNIQUEIDENTIFIER
+  +entity_type: NVARCHAR(50)
+  +entity_id: UNIQUEIDENTIFIER
+  +created_at: DATETIME2
+}
+
+Order: {
+  shape: class
+  +order_id: UNIQUEIDENTIFIER
+  +seller_user_id: UNIQUEIDENTIFIER
+  +buyer_user_id: UNIQUEIDENTIFIER
+  +status_id: UNIQUEIDENTIFIER
+  +total_price: DECIMAL(10,2)
+  +created_at: DATETIME2
+}
+
+User -- Inventory: gerencia {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Promotion: cria {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Rating: recebe avaliações {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Follow: é seguido via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+User -- Order: vende via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Release -- Inventory: disponibilizado como {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Promotion -- PromotionCondition: tem condições {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Promotion -- InventoryPromotion: aplicada via {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
+
+Inventory -- InventoryPromotion: tem promoção {
+  source-arrowhead: 1
+  target-arrowhead: *
+}
