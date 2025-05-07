@@ -1,0 +1,113 @@
+Usuario: {
+  shape: person
+}
+
+FormularioCatalogo: {
+  shape: rectangle
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarDuplicatas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarMasterRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarMasterRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AssociarArtistas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtribuirGeneros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarVersao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Artist: {
+  shape: cylinder
+}
+
+ArtistRelease: {
+  shape: cylinder
+}
+
+Genre: {
+  shape: cylinder
+}
+
+GenreRelease: {
+  shape: cylinder
+}
+
+GenreMasterRelease: {
+  shape: cylinder
+}
+
+Version: {
+  shape: cylinder
+}
+
+Usuario -> FormularioCatalogo: "1. Acessar formulário de adição"
+FormularioCatalogo -> Usuario: "2. Exibir formulário de catálogo"
+Usuario -> ValidarDados: "3. Enviar dados do item"
+ValidarDados -> VerificarDuplicatas: "4. Encaminhar dados validados"
+VerificarDuplicatas -> MasterRelease: "5.1. Verificar duplicatas de master release"
+VerificarDuplicatas -> Release: "5.2. Verificar duplicatas de release"
+MasterRelease -> VerificarDuplicatas: "5.3. Retornar status de master release"
+Release -> VerificarDuplicatas: "5.4. Retornar status de release"
+VerificarDuplicatas -> VerificarMasterRelease: "6. Verificar se master release existe"
+VerificarMasterRelease -> MasterRelease: "7. Consultar master release"
+MasterRelease -> VerificarMasterRelease: "8. Retornar dados do master release"
+VerificarMasterRelease -> CriarMasterRelease: "9.1. Encaminhar criação (se não existir)"
+CriarMasterRelease -> MasterRelease: "9.2. Salvar novo master release"
+VerificarMasterRelease -> CriarRelease: "10. Encaminhar dados para release"
+CriarRelease -> Release: "11. Salvar dados da release"
+CriarRelease -> AssociarArtistas: "12. Encaminhar para associar artistas"
+AssociarArtistas -> Artist: "13.1. Consultar artistas"
+Artist -> AssociarArtistas: "13.2. Retornar dados dos artistas"
+AssociarArtistas -> ArtistRelease: "13.3. Salvar associações artista-release"
+AssociarArtistas -> AtribuirGeneros: "14. Encaminhar para atribuir gêneros"
+AtribuirGeneros -> Genre: "15.1. Consultar gêneros"
+Genre -> AtribuirGeneros: "15.2. Retornar dados dos gêneros"
+AtribuirGeneros -> GenreRelease: "15.3. Salvar associações gênero-release"
+AtribuirGeneros -> GenreMasterRelease: "15.4. Salvar associações gênero-master"
+AtribuirGeneros -> RegistrarVersao: "16. Encaminhar para registro de versão"
+RegistrarVersao -> Version: "17. Salvar dados de versão do item"
+RegistrarVersao -> ResponderUsuario: "18. Confirmar cadastro"
+ResponderUsuario -> Usuario: "19. Exibir mensagem de sucesso"

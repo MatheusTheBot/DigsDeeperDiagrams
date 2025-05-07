@@ -1,0 +1,70 @@
+Usuario: {
+  shape: person
+}
+
+FormularioCadastro: {
+  shape: rectangle
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarExistencia: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtribuirPapel: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarEmailConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+UserRoleAssignment: {
+  shape: cylinder
+}
+
+ServicoEmail: {
+  shape: rectangle
+}
+
+Usuario -> FormularioCadastro: "1. Acessar tela de cadastro"
+FormularioCadastro -> Usuario: "2. Exibir formulário de cadastro"
+Usuario -> ValidarDados: "3. Enviar dados de cadastro"
+ValidarDados -> VerificarExistencia: "4. Encaminhar dados validados"
+VerificarExistencia -> User: "5. Consultar username/email"
+User -> VerificarExistencia: "6. Retornar resultado da consulta"
+VerificarExistencia -> CriarUsuario: "7. Encaminhar dados para criação"
+CriarUsuario -> User: "8. Salvar dados do usuário"
+CriarUsuario -> AtribuirPapel: "9. Solicitar atribuição de papel"
+AtribuirPapel -> UserRole: "10. Consultar papel padrão"
+UserRole -> AtribuirPapel: "11. Retornar dados do papel"
+AtribuirPapel -> UserRoleAssignment: "12. Salvar atribuição de papel"
+AtribuirPapel -> EnviarEmailConfirmacao: "13. Solicitar envio de email"
+EnviarEmailConfirmacao -> ServicoEmail: "14. Enviar email de confirmação"
+EnviarEmailConfirmacao -> ResponderUsuario: "15. Confirmar cadastro"
+ResponderUsuario -> Usuario: "16. Exibir mensagem de sucesso"

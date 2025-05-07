@@ -1,0 +1,130 @@
+Usuario: {
+  shape: person
+}
+
+TelaDetalhes: {
+  shape: rectangle
+}
+
+SolicitarEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+FormularioEdicao: {
+  shape: rectangle
+}
+
+ValidarAlteracoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarDuplicatas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarMasterRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarArtistas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarGeneros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Artist: {
+  shape: cylinder
+}
+
+ArtistRelease: {
+  shape: cylinder
+}
+
+Genre: {
+  shape: cylinder
+}
+
+GenreRelease: {
+  shape: cylinder
+}
+
+GenreMasterRelease: {
+  shape: cylinder
+}
+
+Version: {
+  shape: cylinder
+}
+
+Usuario -> TelaDetalhes: "1. Visualizar detalhes do item"
+TelaDetalhes -> Usuario: "2. Exibir detalhes do item"
+Usuario -> SolicitarEdicao: "3. Solicitar edição do item"
+SolicitarEdicao -> CarregarDados: "4. Encaminhar ID do item"
+CarregarDados -> MasterRelease: "5.1. Consultar dados do master release"
+CarregarDados -> Release: "5.2. Consultar dados da release"
+CarregarDados -> ArtistRelease: "5.3. Consultar artistas associados"
+CarregarDados -> GenreRelease: "5.4. Consultar gêneros associados"
+MasterRelease -> CarregarDados: "5.5. Retornar dados do master release"
+Release -> CarregarDados: "5.6. Retornar dados da release"
+ArtistRelease -> CarregarDados: "5.7. Retornar associações artista-release"
+GenreRelease -> CarregarDados: "5.8. Retornar associações gênero-release"
+CarregarDados -> FormularioEdicao: "6. Carregar formulário com dados"
+FormularioEdicao -> Usuario: "7. Exibir formulário de edição"
+Usuario -> ValidarAlteracoes: "8. Enviar alterações do item"
+ValidarAlteracoes -> VerificarDuplicatas: "9. Encaminhar dados validados"
+VerificarDuplicatas -> MasterRelease: "10.1. Verificar duplicatas de master release"
+VerificarDuplicatas -> Release: "10.2. Verificar duplicatas de release"
+MasterRelease -> VerificarDuplicatas: "10.3. Retornar status de master release"
+Release -> VerificarDuplicatas: "10.4. Retornar status de release"
+VerificarDuplicatas -> SalvarMasterRelease: "11. Encaminhar alterações do master release"
+SalvarMasterRelease -> MasterRelease: "12. Atualizar dados do master release"
+SalvarMasterRelease -> SalvarRelease: "13. Encaminhar alterações da release"
+SalvarRelease -> Release: "14. Atualizar dados da release"
+SalvarRelease -> AtualizarArtistas: "15. Encaminhar atualizações de artistas"
+AtualizarArtistas -> ArtistRelease: "16.1. Remover associações antigas"
+AtualizarArtistas -> ArtistRelease: "16.2. Adicionar novas associações"
+AtualizarArtistas -> AtualizarGeneros: "17. Encaminhar atualizações de gêneros"
+AtualizarGeneros -> GenreRelease: "18.1. Remover associações antigas de release"
+AtualizarGeneros -> GenreMasterRelease: "18.2. Remover associações antigas de master"
+AtualizarGeneros -> GenreRelease: "18.3. Adicionar novas associações de release"
+AtualizarGeneros -> GenreMasterRelease: "18.4. Adicionar novas associações de master"
+AtualizarGeneros -> RegistrarHistorico: "19. Encaminhar para histórico"
+RegistrarHistorico -> Version: "20.1. Salvar alterações no histórico"
+RegistrarHistorico -> ResponderUsuario: "21. Confirmar edição"
+ResponderUsuario -> Usuario: "22. Exibir mensagem de sucesso"

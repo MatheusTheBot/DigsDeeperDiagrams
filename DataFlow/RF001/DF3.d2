@@ -1,0 +1,68 @@
+Usuario: {
+  shape: person
+}
+
+FormularioRecuperacao: {
+  shape: rectangle
+}
+
+VerificarEmail: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+GerarTokenRecuperacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarEmailRecuperacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+FormularioNovaSenha: {
+  shape: rectangle
+}
+
+ValidarToken: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarSenha: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+PasswordReset: {
+  shape: cylinder
+}
+
+ServicoEmail: {
+  shape: rectangle
+}
+
+Usuario -> FormularioRecuperacao: "1. Acessar recuperação de senha"
+FormularioRecuperacao -> Usuario: "2. Exibir formulário de recuperação"
+Usuario -> VerificarEmail: "3. Informar email"
+VerificarEmail -> User: "4. Verificar existência do email"
+User -> VerificarEmail: "5. Retornar status do email"
+VerificarEmail -> GerarTokenRecuperacao: "6. Solicitar geração de token"
+GerarTokenRecuperacao -> PasswordReset: "7. Salvar token de recuperação"
+GerarTokenRecuperacao -> EnviarEmailRecuperacao: "8. Encaminhar dados para envio"
+EnviarEmailRecuperacao -> ServicoEmail: "9. Enviar email com link de recuperação"
+EnviarEmailRecuperacao -> Usuario: "10. Confirmar envio do email"
+Usuario -> FormularioNovaSenha: "11. Acessar link de recuperação"
+FormularioNovaSenha -> Usuario: "12. Exibir formulário de nova senha"
+Usuario -> ValidarToken: "13. Enviar nova senha com token"
+ValidarToken -> PasswordReset: "14. Verificar validade do token"
+PasswordReset -> ValidarToken: "15. Retornar status do token"
+ValidarToken -> AtualizarSenha: "16. Encaminhar nova senha"
+AtualizarSenha -> User: "17. Salvar nova senha"
+AtualizarSenha -> PasswordReset: "18. Invalidar token usado"
+AtualizarSenha -> Usuario: "19. Confirmar alteração de senha"

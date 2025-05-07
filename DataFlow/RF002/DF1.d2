@@ -1,0 +1,70 @@
+Usuario: {
+  shape: person
+}
+
+SolicitarPerfil: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarDadosUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarColecoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarItensVenda: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarAvaliacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporPerfil: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+Collection: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Rating: {
+  shape: cylinder
+}
+
+TelaPerfil: {
+  shape: rectangle
+}
+
+Usuario -> SolicitarPerfil: "1. Solicitar perfil de usuário"
+SolicitarPerfil -> BuscarDadosUsuario: "2. Encaminhar ID do usuário"
+BuscarDadosUsuario -> User: "3. Consultar dados do usuário"
+User -> BuscarDadosUsuario: "4. Retornar dados do usuário"
+BuscarDadosUsuario -> BuscarColecoes: "5. Solicitar coleções públicas"
+BuscarColecoes -> Collection: "6. Consultar coleções do usuário"
+Collection -> BuscarColecoes: "7. Retornar coleções públicas"
+BuscarColecoes -> BuscarItensVenda: "8. Solicitar itens à venda"
+BuscarItensVenda -> Inventory: "9. Consultar inventário do usuário"
+Inventory -> BuscarItensVenda: "10. Retornar itens à venda"
+BuscarItensVenda -> BuscarAvaliacoes: "11. Solicitar avaliações"
+BuscarAvaliacoes -> Rating: "12. Consultar avaliações do usuário"
+Rating -> BuscarAvaliacoes: "13. Retornar histórico de avaliações"
+BuscarAvaliacoes -> ComporPerfil: "14. Enviar dados coletados"
+ComporPerfil -> TelaPerfil: "15. Montar tela de perfil"
+TelaPerfil -> Usuario: "16. Exibir perfil do usuário"

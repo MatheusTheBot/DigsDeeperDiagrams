@@ -1,0 +1,154 @@
+Usuario: {
+  shape: person
+}
+
+FormularioBusca: {
+  shape: rectangle
+}
+
+ProcessarConsulta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorArtista: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorTitulo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorFormato: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorGenero: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorPreco: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorLocalizacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorCondicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorListaDesejos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporResultados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Artist: {
+  shape: cylinder
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Format: {
+  shape: cylinder
+}
+
+Genre: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+Wishlist: {
+  shape: cylinder
+}
+
+TelaResultados: {
+  shape: rectangle
+}
+
+Usuario -> FormularioBusca: "1. Acessar busca do marketplace"
+FormularioBusca -> Usuario: "2. Exibir formulário de busca"
+Usuario -> ProcessarConsulta: "3. Enviar parâmetros de busca"
+ProcessarConsulta -> BuscarPorArtista: "4.1. Encaminhar busca por artista"
+BuscarPorArtista -> Artist: "4.2. Consultar artistas"
+Artist -> BuscarPorArtista: "4.3. Retornar artistas"
+BuscarPorArtista -> Release: "4.4. Consultar releases por artista"
+Release -> BuscarPorArtista: "4.5. Retornar releases por artista"
+ProcessarConsulta -> BuscarPorTitulo: "5.1. Encaminhar busca por título"
+BuscarPorTitulo -> MasterRelease: "5.2. Consultar master releases"
+BuscarPorTitulo -> Release: "5.3. Consultar releases"
+MasterRelease -> BuscarPorTitulo: "5.4. Retornar master releases"
+Release -> BuscarPorTitulo: "5.5. Retornar releases"
+ProcessarConsulta -> BuscarPorFormato: "6.1. Encaminhar busca por formato"
+BuscarPorFormato -> Format: "6.2. Consultar formatos"
+BuscarPorFormato -> Release: "6.3. Consultar releases por formato"
+Format -> BuscarPorFormato: "6.4. Retornar formatos"
+Release -> BuscarPorFormato: "6.5. Retornar releases do formato"
+ProcessarConsulta -> BuscarPorGenero: "7.1. Encaminhar busca por gênero"
+BuscarPorGenero -> Genre: "7.2. Consultar gêneros"
+BuscarPorGenero -> Release: "7.3. Consultar releases por gênero"
+Genre -> BuscarPorGenero: "7.4. Retornar gêneros"
+Release -> BuscarPorGenero: "7.5. Retornar releases do gênero"
+ProcessarConsulta -> BuscarPorPreco: "8.1. Encaminhar busca por preço"
+BuscarPorPreco -> Inventory: "8.2. Consultar itens por faixa de preço"
+Inventory -> BuscarPorPreco: "8.3. Retornar itens por faixa de preço"
+ProcessarConsulta -> BuscarPorLoja: "9.1. Encaminhar busca por loja"
+BuscarPorLoja -> User: "9.2. Consultar lojas"
+BuscarPorLoja -> Inventory: "9.3. Consultar itens por loja"
+User -> BuscarPorLoja: "9.4. Retornar lojas"
+Inventory -> BuscarPorLoja: "9.5. Retornar itens por loja"
+ProcessarConsulta -> BuscarPorLocalizacao: "10.1. Encaminhar busca por localização"
+BuscarPorLocalizacao -> User: "10.2. Consultar lojas por localização"
+BuscarPorLocalizacao -> Inventory: "10.3. Consultar itens por localização"
+User -> BuscarPorLocalizacao: "10.4. Retornar lojas por localização"
+Inventory -> BuscarPorLocalizacao: "10.5. Retornar itens por localização"
+ProcessarConsulta -> BuscarPorCondicao: "11.1. Encaminhar busca por condição"
+BuscarPorCondicao -> Inventory: "11.2. Consultar itens por condição"
+Inventory -> BuscarPorCondicao: "11.3. Retornar itens por condição"
+ProcessarConsulta -> BuscarPorListaDesejos: "12.1. Encaminhar busca por lista de desejos"
+BuscarPorListaDesejos -> Wishlist: "12.2. Consultar lista de desejos do usuário"
+Wishlist -> BuscarPorListaDesejos: "12.3. Retornar itens da lista de desejos"
+BuscarPorListaDesejos -> Inventory: "12.4. Consultar disponibilidade dos itens"
+Inventory -> BuscarPorListaDesejos: "12.5. Retornar itens disponíveis"
+BuscarPorArtista -> ComporResultados: "13.1. Enviar resultados de artista"
+BuscarPorTitulo -> ComporResultados: "13.2. Enviar resultados de título"
+BuscarPorFormato -> ComporResultados: "13.3. Enviar resultados de formato"
+BuscarPorGenero -> ComporResultados: "13.4. Enviar resultados de gênero"
+BuscarPorPreco -> ComporResultados: "13.5. Enviar resultados de preço"
+BuscarPorLoja -> ComporResultados: "13.6. Enviar resultados de loja"
+BuscarPorLocalizacao -> ComporResultados: "13.7. Enviar resultados de localização"
+BuscarPorCondicao -> ComporResultados: "13.8. Enviar resultados de condição"
+BuscarPorListaDesejos -> ComporResultados: "13.9. Enviar resultados de lista de desejos"
+ComporResultados -> TelaResultados: "14. Montar tela de resultados"
+TelaResultados -> Usuario: "15. Exibir resultados da busca"

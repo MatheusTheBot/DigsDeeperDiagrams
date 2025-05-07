@@ -1,0 +1,40 @@
+Usuario: {
+  shape: person
+}
+
+LoginForm: {
+  shape: rectangle
+}
+
+ValidarCredenciais: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarLogin: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserSession: {
+  shape: cylinder
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Usuario -> LoginForm: "1. Acessar tela de login"
+LoginForm -> Usuario: "2. Exibir formulário de login"
+Usuario -> ValidarCredenciais: "3. Enviar credenciais (email/senha)"
+ValidarCredenciais -> User: "4. Consultar usuário"
+User -> ValidarCredenciais: "5. Retornar dados do usuário"
+ValidarCredenciais -> RegistrarLogin: "6. Encaminhar dados para sessão"
+RegistrarLogin -> UserSession: "7. Salvar dados da sessão"
+RegistrarLogin -> ResponderUsuario: "8. Confirmar autenticação"
+ResponderUsuario -> Usuario: "9. Redirecionar para página inicial"

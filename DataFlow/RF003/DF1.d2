@@ -1,0 +1,82 @@
+Usuario: {
+  shape: person
+}
+
+SolicitarDetalhesAlbum: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarMasterRelease: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarVersoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarArtistas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarAliases: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+OrganizarVersoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporPaginaDetalhe: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Artist: {
+  shape: cylinder
+}
+
+ArtistRelease: {
+  shape: cylinder
+}
+
+Alias: {
+  shape: cylinder
+}
+
+TelaDetalhes: {
+  shape: rectangle
+}
+
+Usuario -> SolicitarDetalhesAlbum: "1. Solicitar detalhes de álbum"
+SolicitarDetalhesAlbum -> BuscarMasterRelease: "2. Encaminhar ID do álbum"
+BuscarMasterRelease -> MasterRelease: "3. Consultar dados do master release"
+MasterRelease -> BuscarMasterRelease: "4. Retornar dados do master release"
+BuscarMasterRelease -> BuscarVersoes: "5. Solicitar versões"
+BuscarVersoes -> Release: "6. Consultar versões do master release"
+Release -> BuscarVersoes: "7. Retornar versões do master release"
+BuscarVersoes -> BuscarArtistas: "8. Solicitar artistas"
+BuscarArtistas -> ArtistRelease: "9. Consultar artistas das versões"
+ArtistRelease -> BuscarArtistas: "10. Retornar associações artista-release"
+BuscarArtistas -> Artist: "11. Consultar dados dos artistas"
+Artist -> BuscarArtistas: "12. Retornar dados dos artistas"
+BuscarArtistas -> BuscarAliases: "13. Solicitar aliases"
+BuscarAliases -> Alias: "14. Consultar aliases dos artistas"
+Alias -> BuscarAliases: "15. Retornar aliases dos artistas"
+BuscarAliases -> OrganizarVersoes: "16. Encaminhar dados coletados"
+OrganizarVersoes -> ComporPaginaDetalhe: "17. Organizar versões em tabela"
+ComporPaginaDetalhe -> TelaDetalhes: "18. Montar página de detalhes"
+TelaDetalhes -> Usuario: "19. Exibir página de detalhes do álbum"

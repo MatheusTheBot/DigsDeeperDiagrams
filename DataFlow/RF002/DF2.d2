@@ -1,0 +1,119 @@
+Usuario: {
+  shape: person
+}
+
+FormularioBusca: {
+  shape: rectangle
+}
+
+ProcessarConsulta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorArtista: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorTitulo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorFormato: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorGenero: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorAnoEPais: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPorGravadora: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporResultados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Artist: {
+  shape: cylinder
+}
+
+Alias: {
+  shape: cylinder
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Format: {
+  shape: cylinder
+}
+
+Genre: {
+  shape: cylinder
+}
+
+LabelTBTB: {
+  shape: cylinder
+}
+
+TelaResultados: {
+  shape: rectangle
+}
+
+Usuario -> FormularioBusca: "1. Acessar busca de catálogo"
+FormularioBusca -> Usuario: "2. Exibir formulário de busca"
+Usuario -> ProcessarConsulta: "3. Enviar parâmetros de busca"
+ProcessarConsulta -> BuscarPorArtista: "4.1. Encaminhar busca por artista"
+BuscarPorArtista -> Artist: "4.2. Consultar artistas"
+BuscarPorArtista -> Alias: "4.3. Consultar aliases"
+Artist -> BuscarPorArtista: "4.4. Retornar artistas"
+Alias -> BuscarPorArtista: "4.5. Retornar aliases"
+ProcessarConsulta -> BuscarPorTitulo: "5.1. Encaminhar busca por título"
+BuscarPorTitulo -> MasterRelease: "5.2. Consultar master releases"
+BuscarPorTitulo -> Release: "5.3. Consultar releases"
+MasterRelease -> BuscarPorTitulo: "5.4. Retornar master releases"
+Release -> BuscarPorTitulo: "5.5. Retornar releases"
+ProcessarConsulta -> BuscarPorFormato: "6.1. Encaminhar busca por formato"
+BuscarPorFormato -> Format: "6.2. Consultar formatos"
+BuscarPorFormato -> Release: "6.3. Consultar releases por formato"
+Format -> BuscarPorFormato: "6.4. Retornar formatos"
+Release -> BuscarPorFormato: "6.5. Retornar releases do formato"
+ProcessarConsulta -> BuscarPorGenero: "7.1. Encaminhar busca por gênero"
+BuscarPorGenero -> Genre: "7.2. Consultar gêneros"
+BuscarPorGenero -> Release: "7.3. Consultar releases por gênero"
+Genre -> BuscarPorGenero: "7.4. Retornar gêneros"
+Release -> BuscarPorGenero: "7.5. Retornar releases do gênero"
+ProcessarConsulta -> BuscarPorAnoEPais: "8.1. Encaminhar busca por ano/país"
+BuscarPorAnoEPais -> Release: "8.2. Consultar releases por ano/país"
+Release -> BuscarPorAnoEPais: "8.3. Retornar releases por ano/país"
+ProcessarConsulta -> BuscarPorGravadora: "9.1. Encaminhar busca por gravadora"
+BuscarPorGravadora -> LabelTBTB: "9.2. Consultar gravadoras"
+BuscarPorGravadora -> Release: "9.3. Consultar releases por gravadora"
+LabelTBTB -> BuscarPorGravadora: "9.4. Retornar gravadoras"
+Release -> BuscarPorGravadora: "9.5. Retornar releases da gravadora"
+BuscarPorArtista -> ComporResultados: "10.1. Enviar resultados de artista"
+BuscarPorTitulo -> ComporResultados: "10.2. Enviar resultados de título"
+BuscarPorFormato -> ComporResultados: "10.3. Enviar resultados de formato"
+BuscarPorGenero -> ComporResultados: "10.4. Enviar resultados de gênero"
+BuscarPorAnoEPais -> ComporResultados: "10.5. Enviar resultados de ano/país"
+BuscarPorGravadora -> ComporResultados: "10.6. Enviar resultados de gravadora"
+ComporResultados -> TelaResultados: "11. Montar tela de resultados"
+TelaResultados -> Usuario: "12. Exibir resultados da busca"
