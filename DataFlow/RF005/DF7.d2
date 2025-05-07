@@ -1,0 +1,122 @@
+Loja: {
+  shape: person
+}
+
+Usuario: {
+  shape: person
+}
+
+TelaDetalhesPedido: {
+  shape: rectangle
+}
+
+SolicitarGeracao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDadosPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CalcularValores: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+GerarFatura: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarFaturaViaChat: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarPagamento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPago: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistoricoPago: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+Invoice: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Loja -> TelaDetalhesPedido: "1. Visualizar pedido recebido"
+TelaDetalhesPedido -> Loja: "2. Exibir detalhes do pedido"
+Loja -> SolicitarGeracao: "3. Solicitar geração de fatura"
+SolicitarGeracao -> CarregarDadosPedido: "4. Encaminhar para carregar dados"
+CarregarDadosPedido -> Order: "5. Consultar dados do pedido"
+CarregarDadosPedido -> OrderItem: "6. Consultar itens do pedido"
+Order -> CarregarDadosPedido: "7. Retornar dados do pedido"
+OrderItem -> CarregarDadosPedido: "8. Retornar itens do pedido"
+CarregarDadosPedido -> CalcularValores: "9. Encaminhar para cálculos"
+CalcularValores -> GerarFatura: "10. Encaminhar valores calculados"
+GerarFatura -> Invoice: "11. Salvar nova fatura"
+GerarFatura -> AtualizarStatusPedido: "12. Solicitar atualização de status"
+AtualizarStatusPedido -> OrderStatus: "13. Consultar status 'Aguardando Pagamento'"
+OrderStatus -> AtualizarStatusPedido: "14. Retornar status correspondente"
+AtualizarStatusPedido -> Order: "15. Atualizar status do pedido"
+AtualizarStatusPedido -> RegistrarHistorico: "16. Encaminhar para registro histórico"
+RegistrarHistorico -> OrderStatusHistory: "17. Registrar mudança de status"
+RegistrarHistorico -> EnviarFaturaViaChat: "18. Encaminhar para envio"
+EnviarFaturaViaChat -> Conversation: "19. Consultar conversa do pedido"
+Conversation -> EnviarFaturaViaChat: "20. Retornar conversa ativa"
+EnviarFaturaViaChat -> Message: "21. Salvar mensagem com fatura"
+EnviarFaturaViaChat -> Usuario: "22. Enviar fatura para o usuário"
+Usuario -> EnviarFaturaViaChat: "23. Efetuar pagamento externo"
+Loja -> ConfirmarPagamento: "24. Confirmar recebimento de pagamento"
+ConfirmarPagamento -> Invoice: "25. Atualizar status da fatura"
+ConfirmarPagamento -> AtualizarStatusPago: "26. Solicitar atualização de status"
+AtualizarStatusPago -> OrderStatus: "27. Consultar status 'Pagamento Recebido'"
+OrderStatus -> AtualizarStatusPago: "28. Retornar status correspondente"
+AtualizarStatusPago -> Order: "29. Atualizar status do pedido"
+AtualizarStatusPago -> RegistrarHistoricoPago: "30. Encaminhar para registro histórico"
+RegistrarHistoricoPago -> OrderStatusHistory: "31. Registrar mudança de status"
+RegistrarHistoricoPago -> Usuario: "32. Notificar confirmação de pagamento"

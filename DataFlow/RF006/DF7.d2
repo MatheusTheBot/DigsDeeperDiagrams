@@ -1,0 +1,95 @@
+Usuario: {
+  shape: person
+}
+
+TelaPost: {
+  shape: rectangle
+}
+
+SolicitarComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormulario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SubmeterComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConteudo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarAutorPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarTelaPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Post: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Comment: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario -> TelaPost: "1. Visualizar post"
+TelaPost -> Usuario: "2. Exibir conteúdo do post"
+Usuario -> SolicitarComentario: "3. Solicitar adição de comentário"
+SolicitarComentario -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário ao grupo"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+VerificarPermissoes -> GroupRulesRoles: "7. Consultar permissão 'CREATE_COMMENT'"
+GroupMember -> VerificarPermissoes: "8. Retornar associação"
+GroupRole -> VerificarPermissoes: "9. Retornar papel"
+GroupRulesRoles -> VerificarPermissoes: "10. Retornar permissões"
+VerificarPermissoes -> ExibirFormulario: "11. Encaminhar para formulário"
+ExibirFormulario -> Usuario: "12. Exibir campo de comentário"
+Usuario -> SubmeterComentario: "13. Enviar conteúdo do comentário"
+SubmeterComentario -> ValidarConteudo: "14. Validar dados enviados"
+ValidarConteudo -> SalvarComentario: "15. Encaminhar para salvamento"
+SalvarComentario -> Post: "16. Verificar post"
+Post -> SalvarComentario: "17. Retornar dados do post"
+SalvarComentario -> Comment: "18. Salvar novo comentário"
+SalvarComentario -> NotificarAutorPost: "19. Encaminhar para notificação"
+NotificarAutorPost -> Notification: "20. Criar notificação para autor do post"
+NotificarAutorPost -> AtualizarTelaPost: "21. Encaminhar para atualização"
+AtualizarTelaPost -> TelaPost: "22. Atualizar lista de comentários"
+TelaPost -> Usuario: "23. Exibir comentário adicionado"

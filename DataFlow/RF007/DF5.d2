@@ -1,0 +1,113 @@
+Loja: {
+  shape: person
+}
+
+TelaInventario: {
+  shape: rectangle
+}
+
+SolicitarEdicaoItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDadosItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AlterarDescricao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AlterarPreco: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AlterarCondicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AlterarQuantidade: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarItemInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPedidosPendentes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+Loja -> TelaInventario: "1. Acessar inventário da loja"
+TelaInventario -> Loja: "2. Exibir inventário atual"
+Loja -> SolicitarEdicaoItem: "3. Selecionar item para edição"
+SolicitarEdicaoItem -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Verificar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> CarregarDadosItem: "9. Encaminhar para carregamento"
+CarregarDadosItem -> Inventory: "10. Consultar dados do item"
+Inventory -> CarregarDadosItem: "11. Retornar dados do item"
+CarregarDadosItem -> VerificarPedidosPendentes: "12. Verificar pedidos pendentes"
+VerificarPedidosPendentes -> OrderItem: "13. Consultar pedidos com o item"
+OrderItem -> VerificarPedidosPendentes: "14. Retornar pedidos pendentes"
+VerificarPedidosPendentes -> ExibirFormularioEdicao: "15. Encaminhar para exibição"
+ExibirFormularioEdicao -> Loja: "16. Exibir formulário com avisos (se houver pedidos)"
+Loja -> AlterarDescricao: "17.1. Editar descrição (opcional)"
+Loja -> AlterarPreco: "17.2. Editar preço (opcional)"
+Loja -> AlterarCondicao: "17.3. Editar condição (opcional)"
+Loja -> AlterarQuantidade: "17.4. Editar quantidade (opcional)"
+AlterarDescricao -> ValidarDados: "18.1. Encaminhar alterações"
+AlterarPreco -> ValidarDados: "18.2. Encaminhar alterações"
+AlterarCondicao -> ValidarDados: "18.3. Encaminhar alterações"
+AlterarQuantidade -> ValidarDados: "18.4. Encaminhar alterações"
+ValidarDados -> AtualizarItemInventario: "19. Encaminhar para atualização"
+AtualizarItemInventario -> Inventory: "20. Atualizar dados no inventário"
+AtualizarItemInventario -> AtualizarExibicao: "21. Encaminhar para atualização"
+AtualizarExibicao -> TelaInventario: "22. Atualizar exibição do inventário"
+AtualizarExibicao -> Loja: "23. Confirmar edição do item"

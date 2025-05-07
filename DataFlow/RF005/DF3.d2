@@ -1,0 +1,117 @@
+Usuario: {
+  shape: person
+}
+
+TelaCarrinho: {
+  shape: rectangle
+}
+
+IniciarCheckout: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+TelaCheckout: {
+  shape: rectangle
+}
+
+ConfirmarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarPedidos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SepararPorLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarItensPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+LimparCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ShoppingCart: {
+  shape: cylinder
+}
+
+CartItem: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+Usuario -> TelaCarrinho: "1. Visualizar carrinho de compras"
+TelaCarrinho -> Usuario: "2. Exibir itens do carrinho"
+Usuario -> IniciarCheckout: "3. Iniciar processo de checkout"
+IniciarCheckout -> CarregarDados: "4. Solicitar dados para checkout"
+CarregarDados -> ShoppingCart: "5.1. Consultar carrinho"
+CarregarDados -> CartItem: "5.2. Consultar itens do carrinho"
+CarregarDados -> User: "5.3. Consultar dados do usuário"
+ShoppingCart -> CarregarDados: "6.1. Retornar dados do carrinho"
+CartItem -> CarregarDados: "6.2. Retornar itens do carrinho"
+User -> CarregarDados: "6.3. Retornar dados do usuário"
+CarregarDados -> TelaCheckout: "7. Carregar tela de checkout"
+TelaCheckout -> Usuario: "8. Exibir tela de checkout"
+Usuario -> ConfirmarDados: "9. Confirmar dados de envio e pagamento"
+ConfirmarDados -> ValidarDados: "10. Validar informações fornecidas"
+ValidarDados -> CriarPedidos: "11. Encaminhar para criação de pedidos"
+CriarPedidos -> SepararPorLoja: "12. Separar itens por loja"
+SepararPorLoja -> OrderStatus: "13. Consultar status inicial"
+OrderStatus -> SepararPorLoja: "14. Retornar status 'Novo Pedido'"
+SepararPorLoja -> Order: "15. Criar pedidos separados por loja"
+SepararPorLoja -> CriarItensPedido: "16. Encaminhar para criar itens"
+CriarItensPedido -> OrderItem: "17. Criar itens de pedido"
+CriarItensPedido -> RegistrarHistorico: "18. Encaminhar para histórico"
+RegistrarHistorico -> OrderStatusHistory: "19. Registrar histórico inicial"
+RegistrarHistorico -> LimparCarrinho: "20. Solicitar limpeza do carrinho"
+LimparCarrinho -> CartItem: "21. Remover itens do carrinho"
+LimparCarrinho -> ExibirConfirmacao: "22. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "23. Exibir confirmação de pedidos"

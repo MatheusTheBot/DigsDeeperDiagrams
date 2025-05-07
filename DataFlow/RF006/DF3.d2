@@ -1,0 +1,115 @@
+Usuario: {
+  shape: person
+}
+
+TelaGrupo: {
+  shape: rectangle
+}
+
+SolicitarConfiguracoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarOpcoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+TelaConfiguracoes: {
+  shape: rectangle
+}
+
+GerenciarPapeis: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNovoPapel: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverPapel: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+GerenciarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ModificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+GerenciarMembros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtribuirPapel: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarConfiguracoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Rules: {
+  shape: cylinder
+}
+
+Usuario -> TelaGrupo: "1. Acessar página do grupo"
+TelaGrupo -> Usuario: "2. Exibir detalhes do grupo"
+Usuario -> SolicitarConfiguracoes: "3. Solicitar configurações do grupo"
+SolicitarConfiguracoes -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+GroupMember -> VerificarPermissoes: "7. Retornar associação"
+GroupRole -> VerificarPermissoes: "8. Retornar papel"
+VerificarPermissoes -> CarregarOpcoes: "9. Encaminhar para carregamento"
+CarregarOpcoes -> GroupRole: "10.1. Consultar papéis existentes"
+CarregarOpcoes -> GroupRulesRoles: "10.2. Consultar permissões existentes"
+CarregarOpcoes -> Rules: "10.3. Consultar regras disponíveis"
+CarregarOpcoes -> GroupMember: "10.4. Consultar membros do grupo"
+GroupRole -> CarregarOpcoes: "11.1. Retornar papéis existentes"
+GroupRulesRoles -> CarregarOpcoes: "11.2. Retornar permissões existentes"
+Rules -> CarregarOpcoes: "11.3. Retornar regras disponíveis"
+GroupMember -> CarregarOpcoes: "11.4. Retornar membros do grupo"
+CarregarOpcoes -> TelaConfiguracoes: "12. Montar tela de configurações"
+TelaConfiguracoes -> Usuario: "13. Exibir opções de configuração"
+Usuario -> GerenciarPapeis: "14.1. Gerenciar papéis (opcional)"
+GerenciarPapeis -> CriarNovoPapel: "14.2. Criar novo papel (opcional)"
+GerenciarPapeis -> RemoverPapel: "14.3. Remover papel existente (opcional)"
+CriarNovoPapel -> GroupRole: "14.4. Salvar novo papel"
+RemoverPapel -> GroupRole: "14.5. Remover papel"
+Usuario -> GerenciarPermissoes: "15.1. Gerenciar permissões (opcional)"
+GerenciarPermissoes -> ModificarPermissoes: "15.2. Modificar permissões dos papéis"
+ModificarPermissoes -> GroupRulesRoles: "15.3. Atualizar permissões"
+Usuario -> GerenciarMembros: "16.1. Gerenciar membros (opcional)"
+GerenciarMembros -> AtribuirPapel: "16.2. Modificar papel de usuário"
+AtribuirPapel -> GroupMember: "16.3. Atualizar papel do membro"
+Usuario -> SalvarConfiguracoes: "17. Salvar todas as configurações"
+SalvarConfiguracoes -> Usuario: "18. Confirmar alterações salvas"

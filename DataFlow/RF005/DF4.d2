@@ -1,0 +1,79 @@
+Usuario: {
+  shape: person
+}
+
+MenuPedidos: {
+  shape: rectangle
+}
+
+SolicitarListagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarFiltros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AplicarFiltros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPedidos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarStatusPedidos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+OrdenarResultados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirListagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+TelaDetalhes: {
+  shape: rectangle
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+Usuario -> MenuPedidos: "1. Acessar área de pedidos"
+MenuPedidos -> Usuario: "2. Exibir menu de pedidos"
+Usuario -> SolicitarListagem: "3. Solicitar lista de pedidos"
+SolicitarListagem -> CarregarFiltros: "4. Preparar opções de filtro"
+CarregarFiltros -> OrderStatus: "5. Consultar opções de status"
+OrderStatus -> CarregarFiltros: "6. Retornar opções de status"
+CarregarFiltros -> Usuario: "7. Exibir opções de filtro"
+Usuario -> AplicarFiltros: "8. Definir filtros (opcional)"
+AplicarFiltros -> BuscarPedidos: "9. Encaminhar busca com filtros"
+BuscarPedidos -> User: "10. Obter dados do usuário"
+User -> BuscarPedidos: "11. Retornar dados do usuário"
+BuscarPedidos -> Order: "12. Consultar pedidos do usuário"
+Order -> BuscarPedidos: "13. Retornar pedidos do usuário"
+BuscarPedidos -> BuscarStatusPedidos: "14. Encaminhar para status"
+BuscarStatusPedidos -> OrderStatus: "15. Consultar status dos pedidos"
+OrderStatus -> BuscarStatusPedidos: "16. Retornar nomes dos status"
+BuscarStatusPedidos -> OrdenarResultados: "17. Encaminhar para ordenação"
+OrdenarResultados -> ExibirListagem: "18. Ordenar resultados"
+ExibirListagem -> Usuario: "19. Exibir listagem de pedidos"
+Usuario -> TelaDetalhes: "20. Selecionar pedido para detalhes (opcional)"

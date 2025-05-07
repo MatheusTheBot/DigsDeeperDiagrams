@@ -1,0 +1,101 @@
+Usuario: {
+  shape: person
+}
+
+TelaGrupo: {
+  shape: rectangle
+}
+
+SolicitarCriacaoPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormulario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SubmeterPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConteudo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarSeguidores: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarTelaGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Group: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario -> TelaGrupo: "1. Acessar página do grupo"
+TelaGrupo -> Usuario: "2. Exibir conteúdo do grupo"
+Usuario -> SolicitarCriacaoPost: "3. Solicitar criação de post"
+SolicitarCriacaoPost -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+VerificarPermissoes -> GroupRulesRoles: "7. Consultar permissão 'CREATE_POST'"
+GroupMember -> VerificarPermissoes: "8. Retornar associação"
+GroupRole -> VerificarPermissoes: "9. Retornar papel"
+GroupRulesRoles -> VerificarPermissoes: "10. Retornar permissões"
+VerificarPermissoes -> ExibirFormulario: "11. Encaminhar para formulário"
+ExibirFormulario -> Usuario: "12. Exibir formulário de criação"
+Usuario -> SubmeterPost: "13. Enviar conteúdo do post"
+SubmeterPost -> ValidarConteudo: "14. Validar dados enviados"
+ValidarConteudo -> SalvarPost: "15. Encaminhar para salvamento"
+SalvarPost -> Group: "16. Verificar grupo"
+Group -> SalvarPost: "17. Retornar dados do grupo"
+SalvarPost -> Post: "18. Salvar novo post"
+SalvarPost -> NotificarSeguidores: "19. Encaminhar para notificação"
+NotificarSeguidores -> Follow: "20. Consultar seguidores do grupo"
+Follow -> NotificarSeguidores: "21. Retornar lista de seguidores"
+NotificarSeguidores -> Notification: "22. Criar notificações para seguidores"
+NotificarSeguidores -> AtualizarTelaGrupo: "23. Encaminhar para atualização"
+AtualizarTelaGrupo -> TelaGrupo: "24. Atualizar feed do grupo"
+TelaGrupo -> Usuario: "25. Exibir post criado"

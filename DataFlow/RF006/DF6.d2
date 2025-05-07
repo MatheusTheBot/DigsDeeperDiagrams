@@ -1,0 +1,70 @@
+Usuario: {
+  shape: person
+}
+
+TelaPost: {
+  shape: rectangle
+}
+
+SolicitarEdicaoPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarAutoria: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDadosPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SubmeterEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConteudo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarTelaPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Post: {
+  shape: cylinder
+}
+
+Usuario -> TelaPost: "1. Visualizar post"
+TelaPost -> Usuario: "2. Exibir conteúdo do post"
+Usuario -> SolicitarEdicaoPost: "3. Solicitar edição do post"
+SolicitarEdicaoPost -> VerificarAutoria: "4. Verificar se usuário é autor"
+VerificarAutoria -> Post: "5. Consultar dados do post"
+Post -> VerificarAutoria: "6. Retornar dados do post"
+VerificarAutoria -> CarregarDadosPost: "7. Encaminhar para carregamento"
+CarregarDadosPost -> Post: "8. Consultar conteúdo completo"
+Post -> CarregarDadosPost: "9. Retornar conteúdo completo"
+CarregarDadosPost -> ExibirFormularioEdicao: "10. Encaminhar para exibição"
+ExibirFormularioEdicao -> Usuario: "11. Exibir formulário de edição"
+Usuario -> SubmeterEdicao: "12. Enviar alterações"
+SubmeterEdicao -> ValidarConteudo: "13. Validar dados enviados"
+ValidarConteudo -> AtualizarPost: "14. Encaminhar para atualização"
+AtualizarPost -> Post: "15. Salvar alterações do post"
+AtualizarPost -> AtualizarTelaPost: "16. Encaminhar para exibição"
+AtualizarTelaPost -> TelaPost: "17. Atualizar exibição do post"
+TelaPost -> Usuario: "18. Exibir post atualizado"

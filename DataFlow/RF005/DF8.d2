@@ -1,0 +1,103 @@
+Loja: {
+  shape: person
+}
+
+Usuario: {
+  shape: person
+}
+
+TelaDetalhesPedido: {
+  shape: rectangle
+}
+
+SolicitarConfirmacaoEnvio: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarEnvio: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarCodigoRastreio: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarRastreioViaChat: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+Invoice: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Loja -> TelaDetalhesPedido: "1. Visualizar pedido pago"
+TelaDetalhesPedido -> Loja: "2. Exibir detalhes do pedido"
+Loja -> SolicitarConfirmacaoEnvio: "3. Solicitar confirmação de envio"
+SolicitarConfirmacaoEnvio -> VerificarStatusPedido: "4. Verificar status atual"
+VerificarStatusPedido -> Order: "5. Consultar pedido"
+Order -> VerificarStatusPedido: "6. Retornar status atual"
+VerificarStatusPedido -> ConfirmarEnvio: "7. Solicitar confirmação"
+ConfirmarEnvio -> Loja: "8. Solicitar dados de envio"
+Loja -> RegistrarCodigoRastreio: "9. Informar código de rastreio"
+RegistrarCodigoRastreio -> Invoice: "10. Atualizar fatura com rastreio"
+RegistrarCodigoRastreio -> AtualizarStatusPedido: "11. Encaminhar para atualização"
+AtualizarStatusPedido -> OrderStatus: "12. Consultar status 'Enviado'"
+OrderStatus -> AtualizarStatusPedido: "13. Retornar status correspondente"
+AtualizarStatusPedido -> Order: "14. Atualizar status do pedido"
+AtualizarStatusPedido -> RegistrarHistorico: "15. Encaminhar para registro histórico"
+RegistrarHistorico -> OrderStatusHistory: "16. Registrar mudança de status"
+RegistrarHistorico -> EnviarRastreioViaChat: "17. Encaminhar para envio de rastreio"
+EnviarRastreioViaChat -> Conversation: "18. Consultar conversa do pedido"
+Conversation -> EnviarRastreioViaChat: "19. Retornar conversa ativa"
+EnviarRastreioViaChat -> Message: "20. Salvar mensagem com rastreio"
+EnviarRastreioViaChat -> NotificarUsuario: "21. Solicitar notificação"
+NotificarUsuario -> Notification: "22. Criar notificação para usuário"
+NotificarUsuario -> Usuario: "23. Enviar notificação de envio"

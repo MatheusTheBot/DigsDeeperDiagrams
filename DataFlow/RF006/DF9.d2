@@ -1,0 +1,80 @@
+Usuario: {
+  shape: person
+}
+
+TelaComentario: {
+  shape: rectangle
+}
+
+SolicitarRemocaoComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarAutoria: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarTelaPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Comment: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Usuario -> TelaComentario: "1. Visualizar comentário"
+TelaComentario -> Usuario: "2. Exibir conteúdo do comentário"
+Usuario -> SolicitarRemocaoComentario: "3. Solicitar remoção do comentário"
+SolicitarRemocaoComentario -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário ao grupo"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+VerificarPermissoes -> GroupRulesRoles: "7. Consultar permissão 'DELETE_COMMENT'"
+GroupMember -> VerificarPermissoes: "8. Retornar associação"
+GroupRole -> VerificarPermissoes: "9. Retornar papel"
+GroupRulesRoles -> VerificarPermissoes: "10. Retornar permissões"
+VerificarPermissoes -> VerificarAutoria: "11. Verificar se usuário é autor"
+VerificarAutoria -> Comment: "12. Consultar dados do comentário"
+Comment -> VerificarAutoria: "13. Retornar dados do comentário"
+VerificarAutoria -> ExibirConfirmacao: "14. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "15. Solicitar confirmação"
+Usuario -> ConfirmarRemocao: "16. Confirmar remoção"
+ConfirmarRemocao -> RemoverComentario: "17. Encaminhar para remoção"
+RemoverComentario -> Comment: "18. Marcar comentário como removido"
+RemoverComentario -> AtualizarTelaPost: "19. Encaminhar para atualização"
+AtualizarTelaPost -> TelaComentario: "20. Atualizar exibição dos comentários"
+TelaComentario -> Usuario: "21. Exibir confirmação de remoção"

@@ -1,0 +1,90 @@
+Usuario: {
+  shape: person
+}
+
+TelaCatalogo: {
+  shape: rectangle
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarListaDesejos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+DefinirPreferencias: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarItemDesejado: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MonitorarMarketplace: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarNovosItens: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNotificacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarAlerta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Release: {
+  shape: cylinder
+}
+
+Wishlist: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+ServicoEmail: {
+  shape: rectangle
+}
+
+Usuario -> TelaCatalogo: "1. Navegar pelo catálogo"
+TelaCatalogo -> Usuario: "2. Exibir itens do catálogo"
+Usuario -> SelecionarItem: "3. Selecionar item desejado"
+SelecionarItem -> Release: "4. Consultar detalhes do item"
+Release -> SelecionarItem: "5. Retornar detalhes do item"
+SelecionarItem -> AdicionarListaDesejos: "6. Adicionar à lista de desejos"
+AdicionarListaDesejos -> DefinirPreferencias: "7. Solicitar preferências"
+DefinirPreferencias -> Usuario: "8. Exibir opções de preferências"
+Usuario -> DefinirPreferencias: "9. Definir condição, preço, etc."
+DefinirPreferencias -> SalvarItemDesejado: "10. Encaminhar dados"
+SalvarItemDesejado -> Wishlist: "11. Salvar item na lista de desejos"
+SalvarItemDesejado -> Usuario: "12. Confirmar adição à lista"
+MonitorarMarketplace -> VerificarNovosItens: "13. Processo periódico de verificação"
+VerificarNovosItens -> Wishlist: "14. Consultar itens desejados"
+Wishlist -> VerificarNovosItens: "15. Retornar lista de desejos do usuário"
+VerificarNovosItens -> Inventory: "16. Verificar novos itens à venda"
+Inventory -> VerificarNovosItens: "17. Retornar itens correspondentes"
+VerificarNovosItens -> CriarNotificacao: "18. Encaminhar correspondências"
+CriarNotificacao -> Notification: "19. Criar notificação para o usuário"
+CriarNotificacao -> EnviarAlerta: "20. Solicitar envio de alerta"
+EnviarAlerta -> ServicoEmail: "21. Enviar email de alerta"
+EnviarAlerta -> Usuario: "22. Enviar notificação no sistema"

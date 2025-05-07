@@ -1,0 +1,94 @@
+Usuario: {
+  shape: person
+}
+
+TelaComunitario: {
+  shape: rectangle
+}
+
+SolicitarCriacaoGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormulario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarNome: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarPapeisBasicos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarCriador: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Group: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+Rules: {
+  shape: cylinder
+}
+
+Usuario -> TelaComunitario: "1. Acessar área comunitária"
+TelaComunitario -> Usuario: "2. Exibir área comunitária"
+Usuario -> SolicitarCriacaoGrupo: "3. Solicitar criação de grupo"
+SolicitarCriacaoGrupo -> ExibirFormulario: "4. Encaminhar para formulário"
+ExibirFormulario -> Usuario: "5. Exibir formulário de criação"
+Usuario -> ValidarDados: "6. Enviar dados do grupo"
+ValidarDados -> VerificarNome: "7. Verificar disponibilidade do nome"
+VerificarNome -> Group: "8. Consultar grupos existentes"
+Group -> VerificarNome: "9. Retornar status do nome"
+VerificarNome -> CriarGrupo: "10. Encaminhar para criação"
+CriarGrupo -> Group: "11. Salvar novo grupo"
+CriarGrupo -> CriarPapeisBasicos: "12. Encaminhar para configuração de papéis"
+CriarPapeisBasicos -> GroupRole: "13. Criar papéis básicos (Admin, Moderador, Membro)"
+CriarPapeisBasicos -> ConfigurarPermissoes: "14. Encaminhar para configuração de permissões"
+ConfigurarPermissoes -> Rules: "15. Consultar regras disponíveis"
+Rules -> ConfigurarPermissoes: "16. Retornar regras disponíveis"
+ConfigurarPermissoes -> GroupRulesRoles: "17. Configurar permissões dos papéis"
+ConfigurarPermissoes -> AdicionarCriador: "18. Encaminhar para adicionar criador"
+AdicionarCriador -> GroupMember: "19. Adicionar criador como administrador"
+AdicionarCriador -> ExibirConfirmacao: "20. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "21. Exibir confirmação de criação"

@@ -1,0 +1,69 @@
+Usuario: {
+  shape: person
+}
+
+TelaGrupo: {
+  shape: rectangle
+}
+
+SolicitarDeixarSeguirGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarBotao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverPostsFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Usuario -> TelaGrupo: "1. Visualizar página do grupo seguido"
+TelaGrupo -> Usuario: "2. Exibir detalhes do grupo com botão 'Seguindo'"
+Usuario -> SolicitarDeixarSeguirGrupo: "3. Clicar em 'Deixar de Seguir'"
+SolicitarDeixarSeguirGrupo -> VerificarSeguimento: "4. Verificar relação de seguimento"
+VerificarSeguimento -> Follow: "5. Consultar relação de seguimento"
+Follow -> VerificarSeguimento: "6. Confirmar seguimento do grupo"
+VerificarSeguimento -> ConfirmarRemocao: "7. Solicitar confirmação"
+ConfirmarRemocao -> Usuario: "8. Exibir diálogo de confirmação"
+Usuario -> ConfirmarRemocao: "9. Confirmar decisão"
+ConfirmarRemocao -> RemoverSeguimento: "10. Encaminhar para remoção"
+RemoverSeguimento -> Follow: "11. Remover relação de seguimento"
+RemoverSeguimento -> AtualizarBotao: "12. Encaminhar para atualização"
+AtualizarBotao -> TelaGrupo: "13. Atualizar botão para 'Seguir'"
+RemoverSeguimento -> RemoverPostsFeed: "14. Encaminhar para atualização de feed"
+RemoverPostsFeed -> Post: "15. Consultar posts do grupo no feed"
+Post -> RemoverPostsFeed: "16. Retornar posts para remoção"
+RemoverPostsFeed -> AtualizarFeed: "17. Encaminhar para atualização"
+AtualizarFeed -> Usuario: "18. Atualizar feed sem posts do grupo"

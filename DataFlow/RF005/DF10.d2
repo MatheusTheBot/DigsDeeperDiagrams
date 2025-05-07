@@ -1,0 +1,80 @@
+VerificarPedidosRecebidos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarAtividadeChat: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ArquivarPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarPartes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario: {
+  shape: person
+}
+
+Loja: {
+  shape: person
+}
+
+VerificarPedidosRecebidos -> Order: "1. Verificar pedidos com status 'Recebido'"
+Order -> VerificarPedidosRecebidos: "2. Retornar pedidos aplicáveis"
+VerificarPedidosRecebidos -> VerificarAtividadeChat: "3. Encaminhar para verificação"
+VerificarAtividadeChat -> Conversation: "4. Consultar conversas dos pedidos"
+VerificarAtividadeChat -> Message: "5. Consultar atividade recente"
+Conversation -> VerificarAtividadeChat: "6. Retornar conversas ativas"
+Message -> VerificarAtividadeChat: "7. Retornar mensagens recentes"
+VerificarAtividadeChat -> ArquivarPedido: "8. Encaminhar pedidos inativos por 10+ dias"
+ArquivarPedido -> AtualizarStatusPedido: "9. Solicitar atualização de status"
+AtualizarStatusPedido -> OrderStatus: "10. Consultar status 'Arquivado'"
+OrderStatus -> AtualizarStatusPedido: "11. Retornar status correspondente"
+AtualizarStatusPedido -> Order: "12. Atualizar status do pedido"
+AtualizarStatusPedido -> RegistrarHistorico: "13. Encaminhar para histórico"
+RegistrarHistorico -> OrderStatusHistory: "14. Registrar mudança de status"
+RegistrarHistorico -> NotificarPartes: "15. Encaminhar para notificação"
+NotificarPartes -> Notification: "16.1. Criar notificações"
+NotificarPartes -> Usuario: "16.2. Notificar usuário"
+NotificarPartes -> Loja: "16.3. Notificar loja"

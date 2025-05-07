@@ -1,0 +1,86 @@
+Usuario: {
+  shape: person
+}
+
+PerfilLoja: {
+  shape: rectangle
+}
+
+SolicitarSeguirLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarBotao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNotificacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarNotificacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Loja: {
+  shape: person
+}
+
+User: {
+  shape: cylinder
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Usuario -> PerfilLoja: "1. Visualizar perfil de loja"
+PerfilLoja -> Usuario: "2. Exibir perfil da loja"
+Usuario -> SolicitarSeguirLoja: "3. Clicar em 'Seguir Loja'"
+SolicitarSeguirLoja -> VerificarSeguimento: "4. Verificar se já segue a loja"
+VerificarSeguimento -> Follow: "5. Consultar relações de seguimento"
+Follow -> VerificarSeguimento: "6. Retornar status de seguimento"
+VerificarSeguimento -> CriarSeguimento: "7. Encaminhar para criação"
+CriarSeguimento -> User: "8.1. Consultar dados do usuário"
+User -> CriarSeguimento: "8.2. Retornar dados do usuário"
+CriarSeguimento -> Follow: "9. Salvar relação de seguimento"
+CriarSeguimento -> AtualizarBotao: "10. Encaminhar para atualização"
+AtualizarBotao -> PerfilLoja: "11. Atualizar botão para 'Seguindo'"
+CriarSeguimento -> CriarNotificacao: "12. Encaminhar para notificação"
+CriarNotificacao -> Notification: "13. Criar notificação para loja"
+CriarNotificacao -> Loja: "14. Notificar loja sobre novo seguidor"
+CriarSeguimento -> ConfigurarNotificacoes: "15. Configurar preferências de notificação"
+ConfigurarNotificacoes -> Usuario: "16. Solicitar preferências de notificação"
+Usuario -> ConfigurarNotificacoes: "17. Definir preferências"
+ConfigurarNotificacoes -> User: "18. Salvar preferências"
+CriarSeguimento -> AtualizarFeed: "19. Solicitar atualização do feed"
+AtualizarFeed -> Inventory: "20. Consultar itens recentes da loja"
+Inventory -> AtualizarFeed: "21. Retornar itens recentes"
+AtualizarFeed -> Usuario: "22. Atualizar feed com itens da loja"

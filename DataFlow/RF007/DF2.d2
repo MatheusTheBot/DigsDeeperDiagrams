@@ -1,0 +1,118 @@
+Loja: {
+  shape: person
+}
+
+PerfilLoja: {
+  shape: rectangle
+}
+
+SolicitarEdicaoVitrine: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarVitrineAtual: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirInterfaceEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarNovoItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverItemExistente: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EditarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarCatalogo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EditarPromocoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+PublicarAlteracoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Promotion: {
+  shape: cylinder
+}
+
+InventoryPromotion: {
+  shape: cylinder
+}
+
+Loja -> PerfilLoja: "1. Acessar perfil da loja"
+PerfilLoja -> Loja: "2. Exibir perfil da loja"
+Loja -> SolicitarEdicaoVitrine: "3. Solicitar edição da vitrine"
+SolicitarEdicaoVitrine -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Verificar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> CarregarVitrineAtual: "9. Encaminhar para carregamento"
+CarregarVitrineAtual -> Inventory: "10. Consultar itens do inventário"
+Inventory -> CarregarVitrineAtual: "11. Retornar itens atuais da vitrine"
+CarregarVitrineAtual -> ExibirInterfaceEdicao: "12. Encaminhar para interface"
+ExibirInterfaceEdicao -> Loja: "13. Exibir interface de edição"
+Loja -> AdicionarNovoItem: "14.1. Adicionar novo item (opcional)"
+AdicionarNovoItem -> BuscarCatalogo: "14.2. Solicitar catálogo"
+BuscarCatalogo -> Release: "14.3. Consultar releases disponíveis"
+Release -> BuscarCatalogo: "14.4. Retornar releases disponíveis"
+BuscarCatalogo -> AdicionarNovoItem: "14.5. Exibir itens para seleção"
+AdicionarNovoItem -> AtualizarInventario: "14.6. Encaminhar novo item"
+Loja -> RemoverItemExistente: "15.1. Remover item existente (opcional)"
+RemoverItemExistente -> AtualizarInventario: "15.2. Encaminhar remoção"
+Loja -> EditarItem: "16.1. Editar item existente (opcional)"
+EditarItem -> AtualizarInventario: "16.2. Encaminhar alterações"
+AtualizarInventario -> Inventory: "17. Atualizar dados no inventário"
+Loja -> EditarPromocoes: "18.1. Editar promoções (opcional)"
+EditarPromocoes -> Promotion: "18.2. Atualizar promoções"
+EditarPromocoes -> InventoryPromotion: "18.3. Atualizar associações"
+Loja -> PublicarAlteracoes: "19. Solicitar publicação das alterações"
+PublicarAlteracoes -> Inventory: "20. Atualizar status dos itens"
+PublicarAlteracoes -> PerfilLoja: "21. Atualizar exibição da vitrine"
+PublicarAlteracoes -> Loja: "22. Confirmar alterações salvas"

@@ -1,0 +1,56 @@
+Usuario: {
+  shape: person
+}
+
+InterfaceUsuario: {
+  shape: rectangle
+}
+
+SolicitarCriacaoColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarNome: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Collection: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+Usuario -> InterfaceUsuario: "1. Acessar área de coleções"
+InterfaceUsuario -> Usuario: "2. Exibir área de coleções"
+Usuario -> SolicitarCriacaoColecao: "3. Solicitar criação de coleção"
+SolicitarCriacaoColecao -> InterfaceUsuario: "4. Exibir formulário de criação"
+InterfaceUsuario -> Usuario: "5. Apresentar formulário"
+Usuario -> ValidarDados: "6. Enviar dados da coleção"
+ValidarDados -> VerificarNome: "7. Encaminhar dados validados"
+VerificarNome -> Collection: "8. Verificar disponibilidade do nome"
+Collection -> VerificarNome: "9. Retornar status do nome"
+VerificarNome -> User: "10. Verificar dados do usuário"
+User -> VerificarNome: "11. Retornar dados do usuário"
+VerificarNome -> CriarColecao: "12. Encaminhar dados para criação"
+CriarColecao -> Collection: "13. Salvar nova coleção"
+CriarColecao -> ResponderUsuario: "14. Confirmar criação"
+ResponderUsuario -> Usuario: "15. Exibir mensagem de sucesso"

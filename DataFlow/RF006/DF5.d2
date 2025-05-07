@@ -1,0 +1,96 @@
+Usuario: {
+  shape: person
+}
+
+TelaPost: {
+  shape: rectangle
+}
+
+SolicitarRemocaoPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarAutoria: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverComentarios: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirResultado: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Post: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Comment: {
+  shape: cylinder
+}
+
+Usuario -> TelaPost: "1. Visualizar post"
+TelaPost -> Usuario: "2. Exibir conteúdo do post"
+Usuario -> SolicitarRemocaoPost: "3. Solicitar remoção do post"
+SolicitarRemocaoPost -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário ao grupo"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+VerificarPermissoes -> GroupRulesRoles: "7. Consultar permissão 'DELETE_POST'"
+GroupMember -> VerificarPermissoes: "8. Retornar associação"
+GroupRole -> VerificarPermissoes: "9. Retornar papel"
+GroupRulesRoles -> VerificarPermissoes: "10. Retornar permissões"
+VerificarPermissoes -> VerificarAutoria: "11. Verificar se usuário é autor"
+VerificarAutoria -> Post: "12. Consultar dados do post"
+Post -> VerificarAutoria: "13. Retornar dados do post"
+VerificarAutoria -> ExibirConfirmacao: "14. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "15. Solicitar confirmação"
+Usuario -> ConfirmarRemocao: "16. Confirmar remoção"
+ConfirmarRemocao -> RemoverPost: "17. Encaminhar para remoção"
+RemoverPost -> Post: "18. Marcar post como removido"
+RemoverPost -> RemoverComentarios: "19. Encaminhar para remoção de comentários"
+RemoverComentarios -> Comment: "20. Marcar comentários como removidos"
+RemoverComentarios -> AtualizarFeed: "21. Encaminhar para atualização"
+AtualizarFeed -> ExibirResultado: "22. Atualizar feed do grupo"
+ExibirResultado -> Usuario: "23. Exibir confirmação de remoção"

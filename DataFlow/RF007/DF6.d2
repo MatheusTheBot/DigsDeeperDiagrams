@@ -1,0 +1,129 @@
+Loja: {
+  shape: person
+}
+
+TelaPromocoes: {
+  shape: rectangle
+}
+
+SolicitarCriacaoPromocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioPromocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+DefinirDetalhesBasicos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarRegrasPromocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarLocalidade: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarValorPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarPeriodo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarItensAplicaveis: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConfiguracao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarPromocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AssociarPromocaoItens: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Promotion: {
+  shape: cylinder
+}
+
+PromotionCondition: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+InventoryPromotion: {
+  shape: cylinder
+}
+
+Loja -> TelaPromocoes: "1. Acessar área de promoções"
+TelaPromocoes -> Loja: "2. Exibir promoções atuais"
+Loja -> SolicitarCriacaoPromocao: "3. Solicitar criação de promoção"
+SolicitarCriacaoPromocao -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Verificar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> ExibirFormularioPromocao: "9. Encaminhar para formulário"
+ExibirFormularioPromocao -> Loja: "10. Exibir formulário de criação"
+Loja -> DefinirDetalhesBasicos: "11. Definir nome, descrição e desconto"
+DefinirDetalhesBasicos -> ConfigurarRegrasPromocao: "12. Encaminhar para configuração"
+ConfigurarRegrasPromocao -> Loja: "13. Solicitar regras da promoção"
+Loja -> ConfigurarLocalidade: "14.1. Definir localidades (opcional)"
+Loja -> ConfigurarValorPedido: "14.2. Definir valor mínimo (opcional)"
+Loja -> ConfigurarPeriodo: "14.3. Definir período de vigência"
+ConfigurarLocalidade -> ValidarConfiguracao: "15.1. Encaminhar configuração"
+ConfigurarValorPedido -> ValidarConfiguracao: "15.2. Encaminhar configuração"
+ConfigurarPeriodo -> ValidarConfiguracao: "15.3. Encaminhar configuração"
+ValidarConfiguracao -> SelecionarItensAplicaveis: "16. Solicitar seleção de itens"
+SelecionarItensAplicaveis -> Inventory: "17. Consultar inventário da loja"
+Inventory -> SelecionarItensAplicaveis: "18. Retornar itens disponíveis"
+SelecionarItensAplicaveis -> Loja: "19. Exibir itens para seleção"
+Loja -> SelecionarItensAplicaveis: "20. Selecionar itens aplicáveis"
+SelecionarItensAplicaveis -> SalvarPromocao: "21. Encaminhar para salvamento"
+SalvarPromocao -> Promotion: "22. Salvar promoção"
+SalvarPromocao -> PromotionCondition: "23. Salvar regras da promoção"
+SalvarPromocao -> AssociarPromocaoItens: "24. Encaminhar para associação"
+AssociarPromocaoItens -> InventoryPromotion: "25. Associar itens à promoção"
+AssociarPromocaoItens -> AtualizarExibicao: "26. Encaminhar para atualização"
+AtualizarExibicao -> TelaPromocoes: "27. Atualizar lista de promoções"
+AtualizarExibicao -> Loja: "28. Confirmar criação da promoção"

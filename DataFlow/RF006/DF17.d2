@@ -1,0 +1,106 @@
+Usuario: {
+  shape: person
+}
+
+TelaInicial: {
+  shape: rectangle
+}
+
+CarregarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarSeguidores: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPostsUsuarios: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarRespostasPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarPostsGrupos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarItensLojas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+OrdenarAtividades: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+FiltrarAtividades: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Follow: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Comment: {
+  shape: cylinder
+}
+
+Group: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Usuario -> TelaInicial: "1. Acessar página inicial"
+TelaInicial -> CarregarFeed: "2. Solicitar carregamento do feed"
+CarregarFeed -> BuscarSeguidores: "3. Buscar entidades seguidas"
+BuscarSeguidores -> Follow: "4. Consultar relações de seguimento"
+BuscarSeguidores -> User: "5. Consultar dados de usuário"
+Follow -> BuscarSeguidores: "6. Retornar entidades seguidas"
+User -> BuscarSeguidores: "7. Retornar dados do usuário"
+BuscarSeguidores -> BuscarPostsUsuarios: "8. Encaminhar usuários seguidos"
+BuscarSeguidores -> BuscarPostsGrupos: "9. Encaminhar grupos seguidos"
+BuscarSeguidores -> BuscarItensLojas: "10. Encaminhar lojas seguidas"
+BuscarPostsUsuarios -> Post: "11. Consultar posts de usuários seguidos"
+Post -> BuscarPostsUsuarios: "12. Retornar posts de usuários"
+BuscarPostsUsuarios -> BuscarRespostasPost: "13. Encaminhar para buscar respostas"
+BuscarRespostasPost -> Comment: "14. Consultar respostas em posts do usuário"
+Comment -> BuscarRespostasPost: "15. Retornar respostas em posts"
+BuscarPostsGrupos -> Group: "16. Consultar grupos seguidos"
+BuscarPostsGrupos -> Post: "17. Consultar posts de grupos seguidos"
+Group -> BuscarPostsGrupos: "18. Retornar dados dos grupos"
+Post -> BuscarPostsGrupos: "19. Retornar posts dos grupos"
+BuscarItensLojas -> Inventory: "20. Consultar novos itens de lojas seguidas"
+Inventory -> BuscarItensLojas: "21. Retornar novos itens"
+BuscarPostsUsuarios -> OrdenarAtividades: "22. Encaminhar atividades de usuários"
+BuscarRespostasPost -> OrdenarAtividades: "23. Encaminhar respostas"
+BuscarPostsGrupos -> OrdenarAtividades: "24. Encaminhar atividades de grupos"
+BuscarItensLojas -> OrdenarAtividades: "25. Encaminhar itens de lojas"
+OrdenarAtividades -> FiltrarAtividades: "26. Ordenar atividades cronologicamente"
+FiltrarAtividades -> ComporFeed: "27. Aplicar filtros de preferência"
+ComporFeed -> TelaInicial: "28. Montar feed de atividades"
+TelaInicial -> Usuario: "29. Exibir feed de atividades"

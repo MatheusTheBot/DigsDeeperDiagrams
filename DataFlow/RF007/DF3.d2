@@ -1,0 +1,111 @@
+Loja: {
+  shape: person
+}
+
+TelaInventario: {
+  shape: rectangle
+}
+
+SolicitarAdicaoItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarCatalogo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirCatalogo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioDetalhes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+PreencherDetalhes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarDuplicata: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarItemInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+MasterRelease: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Loja -> TelaInventario: "1. Acessar inventário da loja"
+TelaInventario -> Loja: "2. Exibir inventário atual"
+Loja -> SolicitarAdicaoItem: "3. Solicitar adição de item"
+SolicitarAdicaoItem -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Verificar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> BuscarCatalogo: "9. Encaminhar para busca no catálogo"
+BuscarCatalogo -> Release: "10. Consultar releases disponíveis"
+BuscarCatalogo -> MasterRelease: "11. Consultar master releases"
+Release -> BuscarCatalogo: "12. Retornar releases disponíveis"
+MasterRelease -> BuscarCatalogo: "13. Retornar master releases"
+BuscarCatalogo -> ExibirCatalogo: "14. Encaminhar para exibição"
+ExibirCatalogo -> Loja: "15. Exibir catálogo para seleção"
+Loja -> SelecionarItem: "16. Selecionar item do catálogo"
+SelecionarItem -> ExibirFormularioDetalhes: "17. Encaminhar para detalhes"
+ExibirFormularioDetalhes -> Loja: "18. Exibir formulário de detalhes"
+Loja -> PreencherDetalhes: "19. Preencher descrição, preço e condição"
+PreencherDetalhes -> ValidarDados: "20. Encaminhar para validação"
+ValidarDados -> VerificarDuplicata: "21. Verificar duplicatas no inventário"
+VerificarDuplicata -> Inventory: "22. Consultar inventário existente"
+Inventory -> VerificarDuplicata: "23. Retornar status de duplicata"
+VerificarDuplicata -> CriarItemInventario: "24. Encaminhar para criação"
+CriarItemInventario -> Inventory: "25. Salvar novo item no inventário"
+CriarItemInventario -> AtualizarExibicao: "26. Encaminhar para atualização"
+AtualizarExibicao -> TelaInventario: "27. Atualizar exibição do inventário"
+AtualizarExibicao -> Loja: "28. Confirmar adição do item"

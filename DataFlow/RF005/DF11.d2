@@ -1,0 +1,115 @@
+Loja: {
+  shape: person
+}
+
+Usuario: {
+  shape: person
+}
+
+TelaDetalhesPedido: {
+  shape: rectangle
+}
+
+SolicitarCancelamento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarNecessidadeEstorno: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ProcessarEstorno: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarComunicacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Invoice: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Loja -> TelaDetalhesPedido: "1. Acessar detalhes do pedido"
+TelaDetalhesPedido -> Loja: "2. Exibir detalhes do pedido"
+Loja -> SolicitarCancelamento: "3. Solicitar cancelamento"
+SolicitarCancelamento -> VerificarStatusPedido: "4. Verificar status atual"
+VerificarStatusPedido -> Order: "5. Consultar dados do pedido"
+Order -> VerificarStatusPedido: "6. Retornar status atual"
+VerificarStatusPedido -> VerificarNecessidadeEstorno: "7. Verificar necessidade de estorno"
+VerificarNecessidadeEstorno -> Invoice: "8. Consultar fatura do pedido"
+Invoice -> VerificarNecessidadeEstorno: "9. Retornar status da fatura"
+VerificarNecessidadeEstorno -> ProcessarEstorno: "10.1. Encaminhar para estorno (se necessário)"
+ProcessarEstorno -> Invoice: "10.2. Atualizar fatura com estorno"
+VerificarNecessidadeEstorno -> AtualizarStatusPedido: "11. Encaminhar para cancelamento"
+AtualizarStatusPedido -> OrderStatus: "12. Consultar status 'Cancelado'"
+OrderStatus -> AtualizarStatusPedido: "13. Retornar status correspondente"
+AtualizarStatusPedido -> Order: "14. Atualizar status do pedido"
+AtualizarStatusPedido -> RegistrarHistorico: "15. Encaminhar para histórico"
+RegistrarHistorico -> OrderStatusHistory: "16. Registrar mudança de status"
+RegistrarHistorico -> AtualizarInventario: "17. Encaminhar para atualização"
+AtualizarInventario -> OrderItem: "18. Consultar itens do pedido"
+OrderItem -> AtualizarInventario: "19. Retornar itens do pedido"
+AtualizarInventario -> Inventory: "20. Restaurar quantidades no inventário"
+AtualizarInventario -> EnviarComunicacao: "21. Encaminhar para comunicação"
+EnviarComunicacao -> Conversation: "22. Consultar conversa do pedido"
+Conversation -> EnviarComunicacao: "23. Retornar conversa ativa"
+EnviarComunicacao -> Message: "24. Salvar mensagem de cancelamento"
+EnviarComunicacao -> Notification: "25. Criar notificação para usuário"
+EnviarComunicacao -> Usuario: "26. Notificar sobre cancelamento"

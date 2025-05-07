@@ -1,0 +1,118 @@
+Usuario: {
+  shape: person
+}
+
+ListagemPedidos: {
+  shape: rectangle
+}
+
+SelecionarPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDetalhesPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarItensPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarHistoricoStatus: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarDadosLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarConversas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ComporDetalhes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+TelaDetalhesPedido: {
+  shape: rectangle
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Rating: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Usuario -> ListagemPedidos: "1. Visualizar lista de pedidos"
+ListagemPedidos -> Usuario: "2. Exibir pedidos do usuário"
+Usuario -> SelecionarPedido: "3. Selecionar pedido específico"
+SelecionarPedido -> CarregarDetalhesPedido: "4. Solicitar detalhes do pedido"
+CarregarDetalhesPedido -> Order: "5. Consultar dados do pedido"
+Order -> CarregarDetalhesPedido: "6. Retornar dados do pedido"
+CarregarDetalhesPedido -> BuscarItensPedido: "7. Solicitar itens do pedido"
+BuscarItensPedido -> OrderItem: "8. Consultar itens do pedido"
+BuscarItensPedido -> Release: "9. Consultar detalhes dos itens"
+OrderItem -> BuscarItensPedido: "10. Retornar itens do pedido"
+Release -> BuscarItensPedido: "11. Retornar detalhes dos itens"
+BuscarItensPedido -> BuscarHistoricoStatus: "12. Encaminhar para histórico"
+BuscarHistoricoStatus -> OrderStatusHistory: "13. Consultar histórico de status"
+BuscarHistoricoStatus -> OrderStatus: "14. Consultar descrições de status"
+OrderStatusHistory -> BuscarHistoricoStatus: "15. Retornar histórico de status"
+OrderStatus -> BuscarHistoricoStatus: "16. Retornar descrições de status"
+BuscarHistoricoStatus -> BuscarDadosLoja: "17. Encaminhar para dados da loja"
+BuscarDadosLoja -> User: "18. Consultar dados da loja"
+BuscarDadosLoja -> Inventory: "19. Consultar quantidade de itens à venda"
+BuscarDadosLoja -> Rating: "20. Consultar avaliação da loja"
+User -> BuscarDadosLoja: "21. Retornar dados da loja"
+Inventory -> BuscarDadosLoja: "22. Retornar quantidade de itens"
+Rating -> BuscarDadosLoja: "23. Retornar avaliação da loja"
+BuscarDadosLoja -> BuscarConversas: "24. Encaminhar para conversas"
+BuscarConversas -> Conversation: "25. Consultar conversas do pedido"
+BuscarConversas -> Message: "26. Consultar mensagens trocadas"
+Conversation -> BuscarConversas: "27. Retornar conversas do pedido"
+Message -> BuscarConversas: "28. Retornar mensagens trocadas"
+BuscarConversas -> ComporDetalhes: "29. Encaminhar para composição"
+ComporDetalhes -> TelaDetalhesPedido: "30. Montar tela de detalhes"
+TelaDetalhesPedido -> Usuario: "31. Exibir detalhes completos do pedido"

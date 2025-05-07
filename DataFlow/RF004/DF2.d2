@@ -1,0 +1,88 @@
+Usuario: {
+  shape: person
+}
+
+TelaCatalogo: {
+  shape: rectangle
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ListarColecoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarDuplicata: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+PermitirAnotacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarAnotacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Release: {
+  shape: cylinder
+}
+
+Collection: {
+  shape: cylinder
+}
+
+CollectionRelease: {
+  shape: cylinder
+}
+
+Usuario -> TelaCatalogo: "1. Navegar pelo catálogo"
+TelaCatalogo -> Usuario: "2. Exibir itens do catálogo"
+Usuario -> SelecionarItem: "3. Selecionar item desejado"
+SelecionarItem -> Release: "4. Consultar detalhes do item"
+Release -> SelecionarItem: "5. Retornar detalhes do item"
+SelecionarItem -> AdicionarColecao: "6. Solicitar adição à coleção"
+AdicionarColecao -> ListarColecoes: "7. Solicitar lista de coleções"
+ListarColecoes -> Collection: "8. Consultar coleções do usuário"
+Collection -> ListarColecoes: "9. Retornar coleções do usuário"
+ListarColecoes -> SelecionarColecao: "10. Exibir opções de coleção"
+SelecionarColecao -> Usuario: "11. Apresentar lista de coleções"
+Usuario -> SelecionarColecao: "12. Escolher coleção destino"
+SelecionarColecao -> VerificarDuplicata: "13. Verificar se item já existe na coleção"
+VerificarDuplicata -> CollectionRelease: "14. Consultar items na coleção"
+CollectionRelease -> VerificarDuplicata: "15. Retornar status de duplicidade"
+VerificarDuplicata -> AdicionarItem: "16. Encaminhar para adição"
+AdicionarItem -> CollectionRelease: "17. Salvar item na coleção"
+AdicionarItem -> PermitirAnotacoes: "18. Exibir campo para anotações"
+PermitirAnotacoes -> Usuario: "19. Solicitar anotações do usuário"
+Usuario -> SalvarAnotacoes: "20. Enviar anotações (opcional)"
+SalvarAnotacoes -> CollectionRelease: "21. Atualizar item com anotações"
+SalvarAnotacoes -> ResponderUsuario: "22. Confirmar adição"
+ResponderUsuario -> Usuario: "23. Exibir mensagem de sucesso"

@@ -1,0 +1,95 @@
+Loja: {
+  shape: person
+}
+
+TelaInventario: {
+  shape: rectangle
+}
+
+SolicitarRemocaoItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPedidosRelacionados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverItemInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverPromocoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+OrderItem: {
+  shape: cylinder
+}
+
+InventoryPromotion: {
+  shape: cylinder
+}
+
+CartItem: {
+  shape: cylinder
+}
+
+Loja -> TelaInventario: "1. Acessar inventário da loja"
+TelaInventario -> Loja: "2. Exibir inventário atual"
+Loja -> SolicitarRemocaoItem: "3. Selecionar item para remoção"
+SolicitarRemocaoItem -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Verificar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> VerificarPedidosRelacionados: "9. Verificar dependências"
+VerificarPedidosRelacionados -> OrderItem: "10. Consultar pedidos pendentes"
+VerificarPedidosRelacionados -> CartItem: "11. Consultar carrinhos com o item"
+OrderItem -> VerificarPedidosRelacionados: "12. Retornar pedidos relacionados"
+CartItem -> VerificarPedidosRelacionados: "13. Retornar carrinhos relacionados"
+VerificarPedidosRelacionados -> ExibirConfirmacao: "14. Encaminhar para confirmação"
+ExibirConfirmacao -> Loja: "15. Exibir diálogo de confirmação com avisos"
+Loja -> ConfirmarRemocao: "16. Confirmar decisão de remover"
+ConfirmarRemocao -> RemoverItemInventario: "17. Encaminhar para remoção"
+RemoverItemInventario -> Inventory: "18. Remover item do inventário"
+RemoverItemInventario -> RemoverPromocoes: "19. Encaminhar para limpeza"
+RemoverPromocoes -> InventoryPromotion: "20. Remover promoções associadas"
+RemoverPromocoes -> AtualizarExibicao: "21. Encaminhar para atualização"
+AtualizarExibicao -> TelaInventario: "22. Atualizar exibição do inventário"
+AtualizarExibicao -> Loja: "23. Confirmar remoção do item"

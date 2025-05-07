@@ -1,0 +1,77 @@
+Usuario: {
+  shape: person
+}
+
+PerfilUsuario: {
+  shape: rectangle
+}
+
+SolicitarSeguir: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarBotao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNotificacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+UsuarioSeguido: {
+  shape: person
+}
+
+User: {
+  shape: cylinder
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Usuario -> PerfilUsuario: "1. Visualizar perfil de outro usuário"
+PerfilUsuario -> Usuario: "2. Exibir perfil do usuário"
+Usuario -> SolicitarSeguir: "3. Clicar em 'Seguir'"
+SolicitarSeguir -> VerificarSeguimento: "4. Verificar se já segue"
+VerificarSeguimento -> Follow: "5. Consultar relações de seguimento"
+Follow -> VerificarSeguimento: "6. Retornar status de seguimento"
+VerificarSeguimento -> CriarSeguimento: "7. Encaminhar para criação"
+CriarSeguimento -> User: "8.1. Consultar dados dos usuários"
+User -> CriarSeguimento: "8.2. Retornar dados dos usuários"
+CriarSeguimento -> Follow: "9. Salvar relação de seguimento"
+CriarSeguimento -> AtualizarBotao: "10. Encaminhar para atualização"
+AtualizarBotao -> PerfilUsuario: "11. Atualizar botão para 'Seguindo'"
+CriarSeguimento -> CriarNotificacao: "12. Encaminhar para notificação"
+CriarNotificacao -> Notification: "13. Criar notificação para usuário seguido"
+CriarNotificacao -> UsuarioSeguido: "14. Notificar usuário sobre novo seguidor"
+CriarSeguimento -> AtualizarFeed: "15. Solicitar atualização do feed"
+AtualizarFeed -> Post: "16. Consultar posts recentes do usuário seguido"
+Post -> AtualizarFeed: "17. Retornar posts recentes"
+AtualizarFeed -> Usuario: "18. Atualizar feed com novos posts"

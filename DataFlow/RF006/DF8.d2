@@ -1,0 +1,70 @@
+Usuario: {
+  shape: person
+}
+
+TelaComentario: {
+  shape: rectangle
+}
+
+SolicitarEdicaoComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarAutoria: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarDadosComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SubmeterEdicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConteudo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarComentario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarTelaPost: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Comment: {
+  shape: cylinder
+}
+
+Usuario -> TelaComentario: "1. Visualizar comentário"
+TelaComentario -> Usuario: "2. Exibir conteúdo do comentário"
+Usuario -> SolicitarEdicaoComentario: "3. Solicitar edição do comentário"
+SolicitarEdicaoComentario -> VerificarAutoria: "4. Verificar se usuário é autor"
+VerificarAutoria -> Comment: "5. Consultar dados do comentário"
+Comment -> VerificarAutoria: "6. Retornar dados do comentário"
+VerificarAutoria -> CarregarDadosComentario: "7. Encaminhar para carregamento"
+CarregarDadosComentario -> Comment: "8. Consultar conteúdo completo"
+Comment -> CarregarDadosComentario: "9. Retornar conteúdo completo"
+CarregarDadosComentario -> ExibirFormularioEdicao: "10. Encaminhar para exibição"
+ExibirFormularioEdicao -> Usuario: "11. Exibir campo de edição"
+Usuario -> SubmeterEdicao: "12. Enviar alterações"
+SubmeterEdicao -> ValidarConteudo: "13. Validar dados enviados"
+ValidarConteudo -> AtualizarComentario: "14. Encaminhar para atualização"
+AtualizarComentario -> Comment: "15. Salvar alterações do comentário"
+AtualizarComentario -> AtualizarTelaPost: "16. Encaminhar para exibição"
+AtualizarTelaPost -> TelaComentario: "17. Atualizar exibição do comentário"
+TelaComentario -> Usuario: "18. Exibir comentário atualizado"

@@ -1,0 +1,96 @@
+Usuario: {
+  shape: person
+}
+
+Loja: {
+  shape: person
+}
+
+TelaDetalhes: {
+  shape: rectangle
+}
+
+IniciarConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarConversaExistente: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNovaConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarMensagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarMensagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+TelaChat: {
+  shape: rectangle
+}
+
+Order: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Usuario -> TelaDetalhes: "1. Visualizar detalhes do pedido"
+TelaDetalhes -> Usuario: "2. Exibir detalhes do pedido"
+Usuario -> IniciarConversa: "3. Solicitar conversa com loja"
+IniciarConversa -> BuscarConversaExistente: "4. Verificar conversas existentes"
+BuscarConversaExistente -> Order: "5. Consultar pedido"
+Order -> BuscarConversaExistente: "6. Retornar dados do pedido"
+BuscarConversaExistente -> Conversation: "7. Consultar conversas do pedido"
+Conversation -> BuscarConversaExistente: "8. Retornar conversas existentes"
+BuscarConversaExistente -> CriarNovaConversa: "9.1. Encaminhar criação (se não existir)"
+CriarNovaConversa -> Conversation: "9.2. Criar nova conversa"
+BuscarConversaExistente -> CarregarHistorico: "10. Encaminhar para histórico"
+CarregarHistorico -> Message: "11. Consultar mensagens anteriores"
+Message -> CarregarHistorico: "12. Retornar histórico de mensagens"
+CarregarHistorico -> ExibirConversa: "13. Encaminhar para exibição"
+ExibirConversa -> TelaChat: "14. Montar interface de chat"
+TelaChat -> Usuario: "15. Exibir interface de chat"
+Usuario -> EnviarMensagem: "16. Enviar mensagem para loja"
+EnviarMensagem -> SalvarMensagem: "17. Encaminhar para salvamento"
+SalvarMensagem -> Message: "18. Salvar nova mensagem"
+SalvarMensagem -> AtualizarConversa: "19. Solicitar atualização"
+AtualizarConversa -> TelaChat: "20. Atualizar interface de chat"
+TelaChat -> Usuario: "21. Exibir mensagem enviada"
+Loja -> EnviarMensagem: "22. Enviar resposta"
+EnviarMensagem -> SalvarMensagem: "23. Encaminhar para salvamento"
+SalvarMensagem -> Message: "24. Salvar resposta da loja"
+SalvarMensagem -> AtualizarConversa: "25. Solicitar atualização"
+AtualizarConversa -> TelaChat: "26. Atualizar interface de chat"
+TelaChat -> Usuario: "27. Exibir resposta da loja"

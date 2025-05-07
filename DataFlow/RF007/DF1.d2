@@ -1,0 +1,112 @@
+Loja: {
+  shape: person
+}
+
+PerfilLoja: {
+  shape: rectangle
+}
+
+SolicitarCriacaoVitrine: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirInterfaceVitrine: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarCatalogo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarItens: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+DefinirDetalhes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarInventario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+PublicarVitrine: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarSeguidores: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+User: {
+  shape: cylinder
+}
+
+UserRole: {
+  shape: cylinder
+}
+
+Release: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Loja -> PerfilLoja: "1. Acessar perfil da loja"
+PerfilLoja -> Loja: "2. Exibir perfil da loja"
+Loja -> SolicitarCriacaoVitrine: "3. Solicitar criação de vitrine"
+SolicitarCriacaoVitrine -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> User: "5. Consultar dados do usuário"
+VerificarPermissoes -> UserRole: "6. Consultar papel 'SELLER'"
+User -> VerificarPermissoes: "7. Retornar dados do usuário"
+UserRole -> VerificarPermissoes: "8. Retornar papéis do usuário"
+VerificarPermissoes -> ExibirInterfaceVitrine: "9. Encaminhar para interface"
+ExibirInterfaceVitrine -> Loja: "10. Exibir interface de criação"
+Loja -> BuscarCatalogo: "11. Solicitar itens do catálogo"
+BuscarCatalogo -> Release: "12. Consultar releases disponíveis"
+Release -> BuscarCatalogo: "13. Retornar releases disponíveis"
+BuscarCatalogo -> Loja: "14. Exibir itens disponíveis para seleção"
+Loja -> SelecionarItens: "15. Selecionar itens para vitrine"
+SelecionarItens -> DefinirDetalhes: "16. Encaminhar para definição de detalhes"
+DefinirDetalhes -> Loja: "17. Solicitar descrições, preços e condições"
+Loja -> DefinirDetalhes: "18. Fornecer detalhes dos itens"
+DefinirDetalhes -> SalvarInventario: "19. Encaminhar para salvamento"
+SalvarInventario -> Inventory: "20. Salvar itens no inventário"
+SalvarInventario -> ConfigurarExibicao: "21. Encaminhar para configuração"
+ConfigurarExibicao -> Loja: "22. Solicitar configurações de exibição"
+Loja -> ConfigurarExibicao: "23. Definir configurações de exibição"
+ConfigurarExibicao -> PublicarVitrine: "24. Encaminhar para publicação"
+PublicarVitrine -> Inventory: "25. Atualizar status para exibição"
+PublicarVitrine -> NotificarSeguidores: "26. Encaminhar para notificação"
+NotificarSeguidores -> Follow: "27. Consultar seguidores da loja"
+Follow -> NotificarSeguidores: "28. Retornar lista de seguidores"
+NotificarSeguidores -> Notification: "29. Criar notificações para seguidores"
+NotificarSeguidores -> Loja: "30. Confirmar criação da vitrine"

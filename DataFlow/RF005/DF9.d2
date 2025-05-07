@@ -1,0 +1,81 @@
+Usuario: {
+  shape: person
+}
+
+ServicoEmail: {
+  shape: rectangle
+}
+
+VerificarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarEmailConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AgendarEmailSemanal: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ReceberConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarStatusPedido: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RegistrarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+OrderStatusHistory: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Loja: {
+  shape: person
+}
+
+VerificarStatusPedido -> Order: "1. Verificar pedidos enviados há 20 dias"
+Order -> VerificarStatusPedido: "2. Retornar pedidos aplicáveis"
+VerificarStatusPedido -> EnviarEmailConfirmacao: "3. Encaminhar para solicitação"
+EnviarEmailConfirmacao -> ServicoEmail: "4. Enviar email de confirmação"
+ServicoEmail -> Usuario: "5. Entregar email ao usuário"
+Usuario -> ReceberConfirmacao: "6.1. Confirmar recebimento (positivo)"
+ReceberConfirmacao -> AtualizarStatusPedido: "7. Encaminhar confirmação"
+AtualizarStatusPedido -> OrderStatus: "8. Consultar status 'Recebido'"
+OrderStatus -> AtualizarStatusPedido: "9. Retornar status correspondente"
+AtualizarStatusPedido -> Order: "10. Atualizar status do pedido"
+AtualizarStatusPedido -> RegistrarHistorico: "11. Encaminhar para histórico"
+RegistrarHistorico -> OrderStatusHistory: "12. Registrar mudança de status"
+RegistrarHistorico -> NotificarLoja: "13. Solicitar notificação"
+NotificarLoja -> Notification: "14. Criar notificação para loja"
+NotificarLoja -> Loja: "15. Enviar notificação de recebimento"
+VerificarStatusPedido -> AgendarEmailSemanal: "16.1. Sem resposta (negativo)"
+AgendarEmailSemanal -> ServicoEmail: "16.2. Programar lembretes semanais"
+ServicoEmail -> Usuario: "16.3. Enviar emails semanais"

@@ -1,0 +1,100 @@
+Usuario: {
+  shape: person
+}
+
+Loja: {
+  shape: person
+}
+
+TelaDetalhesPedido: {
+  shape: rectangle
+}
+
+SolicitarAvaliacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarElegibilidade: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirFormularioAvaliacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SubmeterAvaliacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarDados: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarAvaliacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarMediaAvaliacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarAvaliado: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Order: {
+  shape: cylinder
+}
+
+OrderStatus: {
+  shape: cylinder
+}
+
+Rating: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario -> TelaDetalhesPedido: "1. Acessar pedido finalizado"
+TelaDetalhesPedido -> Usuario: "2. Exibir detalhes do pedido"
+Usuario -> SolicitarAvaliacao: "3. Solicitar avaliação da loja"
+SolicitarAvaliacao -> VerificarElegibilidade: "4. Verificar elegibilidade"
+VerificarElegibilidade -> Order: "5. Consultar dados do pedido"
+VerificarElegibilidade -> OrderStatus: "6. Verificar status de conclusão"
+Order -> VerificarElegibilidade: "7. Retornar dados do pedido"
+OrderStatus -> VerificarElegibilidade: "8. Retornar status do pedido"
+VerificarElegibilidade -> ExibirFormularioAvaliacao: "9. Encaminhar para formulário"
+ExibirFormularioAvaliacao -> Usuario: "10. Exibir formulário de avaliação"
+Usuario -> SubmeterAvaliacao: "11. Enviar avaliação"
+SubmeterAvaliacao -> ValidarDados: "12. Validar dados enviados"
+ValidarDados -> SalvarAvaliacao: "13. Encaminhar para salvamento"
+SalvarAvaliacao -> Rating: "14. Salvar nova avaliação"
+SalvarAvaliacao -> AtualizarMediaAvaliacoes: "15. Solicitar atualização da média"
+AtualizarMediaAvaliacoes -> Rating: "16. Consultar avaliações anteriores"
+Rating -> AtualizarMediaAvaliacoes: "17. Retornar todas as avaliações"
+AtualizarMediaAvaliacoes -> NotificarAvaliado: "18. Encaminhar para notificação"
+NotificarAvaliado -> Notification: "19. Criar notificação"
+NotificarAvaliado -> Loja: "20. Notificar sobre nova avaliação"
+NotificarAvaliado -> ExibirConfirmacao: "21. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "22. Confirmar envio da avaliação"
+Loja -> SolicitarAvaliacao: "23. Solicitar avaliação do comprador"
+SolicitarAvaliacao -> VerificarElegibilidade: "24. Verificar elegibilidade"
+ExibirFormularioAvaliacao -> Loja: "25. Exibir formulário de avaliação"
+Loja -> SubmeterAvaliacao: "26. Enviar avaliação do comprador"
+NotificarAvaliado -> Usuario: "27. Notificar sobre nova avaliação"

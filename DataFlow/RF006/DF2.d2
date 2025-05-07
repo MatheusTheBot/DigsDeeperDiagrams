@@ -1,0 +1,101 @@
+Usuario: {
+  shape: person
+}
+
+TelaGrupo: {
+  shape: rectangle
+}
+
+SolicitarRemocaoGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPermissoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConfirmacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MarcarGrupoInativo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverAssociacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarMembros: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirResultado: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Group: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+GroupRulesRoles: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Comment: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario -> TelaGrupo: "1. Acessar página do grupo"
+TelaGrupo -> Usuario: "2. Exibir detalhes do grupo"
+Usuario -> SolicitarRemocaoGrupo: "3. Solicitar remoção do grupo"
+SolicitarRemocaoGrupo -> VerificarPermissoes: "4. Verificar permissões do usuário"
+VerificarPermissoes -> GroupMember: "5. Consultar associação do usuário"
+VerificarPermissoes -> GroupRole: "6. Consultar papel do usuário"
+GroupMember -> VerificarPermissoes: "7. Retornar associação"
+GroupRole -> VerificarPermissoes: "8. Retornar papel"
+VerificarPermissoes -> ExibirConfirmacao: "9. Encaminhar para confirmação"
+ExibirConfirmacao -> Usuario: "10. Solicitar confirmação"
+Usuario -> ConfirmarRemocao: "11. Confirmar remoção"
+ConfirmarRemocao -> MarcarGrupoInativo: "12. Encaminhar para inativação"
+MarcarGrupoInativo -> Group: "13. Marcar grupo como inativo"
+MarcarGrupoInativo -> RemoverAssociacoes: "14. Encaminhar para limpeza"
+RemoverAssociacoes -> GroupMember: "15.1. Manter referências para histórico"
+RemoverAssociacoes -> GroupRole: "15.2. Manter referências para histórico"
+RemoverAssociacoes -> GroupRulesRoles: "15.3. Manter referências para histórico"
+RemoverAssociacoes -> Post: "15.4. Manter referências para histórico"
+RemoverAssociacoes -> Comment: "15.5. Manter referências para histórico"
+RemoverAssociacoes -> NotificarMembros: "16. Encaminhar para notificação"
+NotificarMembros -> GroupMember: "17. Consultar membros do grupo"
+GroupMember -> NotificarMembros: "18. Retornar lista de membros"
+NotificarMembros -> Notification: "19. Criar notificações para membros"
+NotificarMembros -> ExibirResultado: "20. Encaminhar para resultado"
+ExibirResultado -> Usuario: "21. Exibir confirmação de remoção"

@@ -1,0 +1,90 @@
+Usuario: {
+  shape: person
+}
+
+TelaGrupo: {
+  shape: rectangle
+}
+
+SolicitarSeguirGrupo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarPrivacidade: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarBotao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarAdministradores: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Group: {
+  shape: cylinder
+}
+
+Follow: {
+  shape: cylinder
+}
+
+GroupMember: {
+  shape: cylinder
+}
+
+GroupRole: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Post: {
+  shape: cylinder
+}
+
+Usuario -> TelaGrupo: "1. Visualizar página do grupo"
+TelaGrupo -> Usuario: "2. Exibir detalhes do grupo"
+Usuario -> SolicitarSeguirGrupo: "3. Clicar em 'Seguir Grupo'"
+SolicitarSeguirGrupo -> VerificarSeguimento: "4. Verificar se já segue o grupo"
+VerificarSeguimento -> Follow: "5. Consultar relações de seguimento"
+Follow -> VerificarSeguimento: "6. Retornar status de seguimento"
+VerificarSeguimento -> VerificarPrivacidade: "7. Verificar privacidade do grupo"
+VerificarPrivacidade -> Group: "8. Consultar configurações do grupo"
+Group -> VerificarPrivacidade: "9. Retornar configurações de privacidade"
+VerificarPrivacidade -> CriarSeguimento: "10. Encaminhar para criação"
+CriarSeguimento -> Follow: "11. Salvar relação de seguimento"
+CriarSeguimento -> AtualizarBotao: "12. Encaminhar para atualização"
+AtualizarBotao -> TelaGrupo: "13. Atualizar botão para 'Seguindo'"
+CriarSeguimento -> NotificarAdministradores: "14. Encaminhar para notificação"
+NotificarAdministradores -> GroupMember: "15. Consultar administradores do grupo"
+GroupMember -> GroupRole: "16. Consultar papéis dos membros"
+GroupMember -> NotificarAdministradores: "17. Retornar lista de administradores"
+GroupRole -> NotificarAdministradores: "18. Retornar papéis dos membros"
+NotificarAdministradores -> Notification: "19. Criar notificações para administradores"
+CriarSeguimento -> AtualizarFeed: "20. Solicitar atualização do feed"
+AtualizarFeed -> Post: "21. Consultar posts recentes do grupo"
+Post -> AtualizarFeed: "22. Retornar posts recentes"
+AtualizarFeed -> Usuario: "23. Atualizar feed com posts do grupo"

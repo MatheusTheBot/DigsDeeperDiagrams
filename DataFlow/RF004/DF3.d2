@@ -1,0 +1,80 @@
+Usuario: {
+  shape: person
+}
+
+TelaColecao: {
+  shape: rectangle
+}
+
+VisualizarColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SolicitarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarColecao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ResponderUsuario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Collection: {
+  shape: cylinder
+}
+
+CollectionRelease: {
+  shape: cylinder
+}
+
+CollectionReleaseFolder: {
+  shape: cylinder
+}
+
+TagRelationship: {
+  shape: cylinder
+}
+
+Usuario -> TelaColecao: "1. Acessar coleção"
+TelaColecao -> VisualizarColecao: "2. Solicitar visualização da coleção"
+VisualizarColecao -> Collection: "3. Consultar dados da coleção"
+VisualizarColecao -> CollectionRelease: "4. Consultar itens da coleção"
+Collection -> VisualizarColecao: "5. Retornar dados da coleção"
+CollectionRelease -> VisualizarColecao: "6. Retornar itens da coleção"
+VisualizarColecao -> TelaColecao: "7. Montar visualização da coleção"
+TelaColecao -> Usuario: "8. Exibir coleção com seus itens"
+Usuario -> SelecionarItem: "9. Selecionar item para remover"
+SelecionarItem -> SolicitarRemocao: "10. Solicitar remoção do item"
+SolicitarRemocao -> ConfirmarRemocao: "11. Pedir confirmação"
+ConfirmarRemocao -> Usuario: "12. Solicitar confirmação do usuário"
+Usuario -> ConfirmarRemocao: "13. Confirmar remoção"
+ConfirmarRemocao -> RemoverItem: "14. Encaminhar para remoção"
+RemoverItem -> CollectionReleaseFolder: "15.1. Remover associações com pastas"
+RemoverItem -> TagRelationship: "15.2. Remover associações com tags"
+RemoverItem -> CollectionRelease: "15.3. Remover item da coleção"
+RemoverItem -> AtualizarColecao: "16. Solicitar atualização"
+AtualizarColecao -> TelaColecao: "17. Atualizar visualização"
+AtualizarColecao -> ResponderUsuario: "18. Confirmar remoção"
+ResponderUsuario -> Usuario: "19. Exibir mensagem de sucesso"

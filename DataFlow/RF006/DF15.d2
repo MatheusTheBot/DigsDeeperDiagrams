@@ -1,0 +1,80 @@
+Usuario: {
+  shape: person
+}
+
+PerfilLoja: {
+  shape: rectangle
+}
+
+SolicitarDeixarSeguirLoja: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfirmarRemocao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverSeguimento: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarBotao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+DesativarNotificacoes: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverItensFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarFeed: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Follow: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+Usuario -> PerfilLoja: "1. Visualizar perfil de loja seguida"
+PerfilLoja -> Usuario: "2. Exibir perfil com botão 'Seguindo'"
+Usuario -> SolicitarDeixarSeguirLoja: "3. Clicar em 'Deixar de Seguir'"
+SolicitarDeixarSeguirLoja -> VerificarSeguimento: "4. Verificar relação de seguimento"
+VerificarSeguimento -> Follow: "5. Consultar relação de seguimento"
+Follow -> VerificarSeguimento: "6. Confirmar seguimento da loja"
+VerificarSeguimento -> ConfirmarRemocao: "7. Solicitar confirmação"
+ConfirmarRemocao -> Usuario: "8. Exibir diálogo de confirmação"
+Usuario -> ConfirmarRemocao: "9. Confirmar decisão"
+ConfirmarRemocao -> RemoverSeguimento: "10. Encaminhar para remoção"
+RemoverSeguimento -> Follow: "11. Remover relação de seguimento"
+RemoverSeguimento -> AtualizarBotao: "12. Encaminhar para atualização"
+AtualizarBotao -> PerfilLoja: "13. Atualizar botão para 'Seguir'"
+RemoverSeguimento -> DesativarNotificacoes: "14. Encaminhar para desativar notificações"
+DesativarNotificacoes -> Notification: "15. Desativar notificações futuras da loja"
+RemoverSeguimento -> RemoverItensFeed: "16. Encaminhar para atualização de feed"
+RemoverItensFeed -> Inventory: "17. Consultar itens da loja no feed"
+Inventory -> RemoverItensFeed: "18. Retornar itens para remoção"
+RemoverItensFeed -> AtualizarFeed: "19. Encaminhar para atualização"
+AtualizarFeed -> Usuario: "20. Atualizar feed sem itens da loja"

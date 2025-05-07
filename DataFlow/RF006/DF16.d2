@@ -1,0 +1,103 @@
+Usuario: {
+  shape: person
+}
+
+PerfilUsuario: {
+  shape: rectangle
+}
+
+SolicitarMensagemDireta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarConversaExistente: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarNovaConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarHistorico: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExibirConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+EnviarMensagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ValidarConteudo: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarMensagem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+NotificarDestinatario: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarConversa: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Destinatario: {
+  shape: person
+}
+
+User: {
+  shape: cylinder
+}
+
+Conversation: {
+  shape: cylinder
+}
+
+Message: {
+  shape: cylinder
+}
+
+Notification: {
+  shape: cylinder
+}
+
+Usuario -> PerfilUsuario: "1. Visualizar perfil de outro usuário"
+PerfilUsuario -> Usuario: "2. Exibir perfil do usuário"
+Usuario -> SolicitarMensagemDireta: "3. Solicitar mensagem direta"
+SolicitarMensagemDireta -> VerificarConversaExistente: "4. Verificar conversas existentes"
+VerificarConversaExistente -> Conversation: "5. Consultar conversas entre usuários"
+Conversation -> VerificarConversaExistente: "6. Retornar conversas existentes"
+VerificarConversaExistente -> CriarNovaConversa: "7.1. Encaminhar criação (se não existir)"
+CriarNovaConversa -> User: "7.2. Obter dados dos usuários"
+User -> CriarNovaConversa: "7.3. Retornar dados dos usuários"
+CriarNovaConversa -> Conversation: "7.4. Criar nova conversa"
+VerificarConversaExistente -> CarregarHistorico: "8. Encaminhar para histórico"
+CarregarHistorico -> Message: "9. Consultar mensagens anteriores"
+Message -> CarregarHistorico: "10. Retornar histórico de mensagens"
+CarregarHistorico -> ExibirConversa: "11. Encaminhar para exibição"
+ExibirConversa -> Usuario: "12. Exibir interface de chat"
+Usuario -> EnviarMensagem: "13. Digitar e enviar mensagem"
+EnviarMensagem -> ValidarConteudo: "14. Validar conteúdo da mensagem"
+ValidarConteudo -> SalvarMensagem: "15. Encaminhar para salvamento"
+SalvarMensagem -> Message: "16. Salvar nova mensagem"
+SalvarMensagem -> NotificarDestinatario: "17. Encaminhar para notificação"
+NotificarDestinatario -> Notification: "18. Criar notificação para destinatário"
+NotificarDestinatario -> Destinatario: "19. Notificar sobre nova mensagem"
+NotificarDestinatario -> AtualizarConversa: "20. Encaminhar para atualização"
+AtualizarConversa -> ExibirConversa: "21. Atualizar interface de chat"
+ExibirConversa -> Usuario: "22. Exibir mensagem enviada"

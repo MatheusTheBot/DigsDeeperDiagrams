@@ -1,0 +1,97 @@
+Usuario: {
+  shape: person
+}
+
+TelaMarketplace: {
+  shape: rectangle
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+VerificarDisponibilidade: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarAoCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+BuscarCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarItemAoCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CalcularCustos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConverterMoeda: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+ShoppingCart: {
+  shape: cylinder
+}
+
+CartItem: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+ServicoConversaoMoeda: {
+  shape: rectangle
+}
+
+Usuario -> TelaMarketplace: "1. Navegar pelo marketplace"
+TelaMarketplace -> Usuario: "2. Exibir itens à venda"
+Usuario -> SelecionarItem: "3. Selecionar item para compra"
+SelecionarItem -> VerificarDisponibilidade: "4. Verificar disponibilidade"
+VerificarDisponibilidade -> Inventory: "5. Consultar estoque do item"
+Inventory -> VerificarDisponibilidade: "6. Retornar status do estoque"
+VerificarDisponibilidade -> AdicionarAoCarrinho: "7. Solicitar adição ao carrinho"
+AdicionarAoCarrinho -> BuscarCarrinho: "8. Verificar carrinho existente"
+BuscarCarrinho -> ShoppingCart: "9. Consultar carrinho do usuário"
+ShoppingCart -> BuscarCarrinho: "10. Retornar dados do carrinho"
+BuscarCarrinho -> CriarCarrinho: "11.1. Encaminhar criação (se não existir)"
+CriarCarrinho -> ShoppingCart: "11.2. Criar novo carrinho"
+BuscarCarrinho -> AdicionarItemAoCarrinho: "12. Encaminhar adição de item"
+AdicionarItemAoCarrinho -> CartItem: "13. Salvar item no carrinho"
+AdicionarItemAoCarrinho -> CalcularCustos: "14. Solicitar cálculo de custos"
+CalcularCustos -> Inventory: "15.1. Obter preço do item"
+CalcularCustos -> User: "15.2. Obter preferência de moeda"
+Inventory -> CalcularCustos: "16.1. Retornar preço do item"
+User -> CalcularCustos: "16.2. Retornar moeda preferida"
+CalcularCustos -> ConverterMoeda: "17. Encaminhar para conversão"
+ConverterMoeda -> ServicoConversaoMoeda: "18. Solicitar conversão de moeda"
+ServicoConversaoMoeda -> ConverterMoeda: "19. Retornar valores convertidos"
+ConverterMoeda -> AtualizarExibicao: "20. Atualizar exibição do carrinho"
+AtualizarExibicao -> Usuario: "21. Mostrar item adicionado e custos"

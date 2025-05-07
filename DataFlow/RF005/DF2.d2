@@ -1,0 +1,88 @@
+Usuario: {
+  shape: person
+}
+
+TelaCarrinho: {
+  shape: rectangle
+}
+
+CarregarCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SelecionarItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RemoverDoCarrinho: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ExcluirItem: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+RecalcularCustos: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConverterMoeda: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarExibicao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ShoppingCart: {
+  shape: cylinder
+}
+
+CartItem: {
+  shape: cylinder
+}
+
+Inventory: {
+  shape: cylinder
+}
+
+User: {
+  shape: cylinder
+}
+
+ServicoConversaoMoeda: {
+  shape: rectangle
+}
+
+Usuario -> TelaCarrinho: "1. Acessar carrinho de compras"
+TelaCarrinho -> CarregarCarrinho: "2. Solicitar dados do carrinho"
+CarregarCarrinho -> ShoppingCart: "3. Consultar carrinho do usuário"
+ShoppingCart -> CarregarCarrinho: "4. Retornar dados do carrinho"
+CarregarCarrinho -> CartItem: "5. Consultar itens do carrinho"
+CartItem -> CarregarCarrinho: "6. Retornar itens do carrinho"
+CarregarCarrinho -> TelaCarrinho: "7. Montar exibição do carrinho"
+TelaCarrinho -> Usuario: "8. Exibir carrinho de compras"
+Usuario -> SelecionarItem: "9. Selecionar item para remover"
+SelecionarItem -> RemoverDoCarrinho: "10. Solicitar remoção do item"
+RemoverDoCarrinho -> ExcluirItem: "11. Encaminhar para exclusão"
+ExcluirItem -> CartItem: "12. Excluir item do carrinho"
+ExcluirItem -> RecalcularCustos: "13. Solicitar recálculo de custos"
+RecalcularCustos -> CartItem: "14.1. Consultar itens restantes"
+RecalcularCustos -> Inventory: "14.2. Consultar preços dos itens"
+RecalcularCustos -> User: "14.3. Consultar preferência de moeda"
+CartItem -> RecalcularCustos: "15.1. Retornar itens restantes"
+Inventory -> RecalcularCustos: "15.2. Retornar preços dos itens"
+User -> RecalcularCustos: "15.3. Retornar moeda preferida"
+RecalcularCustos -> ConverterMoeda: "16. Encaminhar para conversão"
+ConverterMoeda -> ServicoConversaoMoeda: "17. Solicitar conversão de moeda"
+ServicoConversaoMoeda -> ConverterMoeda: "18. Retornar valores convertidos"
+ConverterMoeda -> AtualizarExibicao: "19. Atualizar totais do carrinho"
+AtualizarExibicao -> TelaCarrinho: "20. Atualizar exibição do carrinho"
+TelaCarrinho -> Usuario: "21. Exibir carrinho atualizado"

@@ -1,0 +1,112 @@
+Usuario: {
+  shape: person
+}
+
+TelaColecao: {
+  shape: rectangle
+}
+
+SolicitarOrganizacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CarregarFerramentas: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarPasta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+CriarTag: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AdicionarAnotacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+MoverParaPasta: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AplicarTag: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+ConfigurarWidgets: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+SalvarOrganizacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+AtualizarVisualizacao: {
+  shape: oval
+  style.fill: "#E5F5FF"
+}
+
+Collection: {
+  shape: cylinder
+}
+
+CollectionRelease: {
+  shape: cylinder
+}
+
+Folder: {
+  shape: cylinder
+}
+
+CollectionReleaseFolder: {
+  shape: cylinder
+}
+
+Tag: {
+  shape: cylinder
+}
+
+TagRelationship: {
+  shape: cylinder
+}
+
+Usuario -> TelaColecao: "1. Acessar coleção"
+TelaColecao -> Usuario: "2. Exibir coleção"
+Usuario -> SolicitarOrganizacao: "3. Solicitar organização da coleção"
+SolicitarOrganizacao -> CarregarFerramentas: "4. Carregar ferramentas de organização"
+CarregarFerramentas -> Collection: "5.1. Consultar dados da coleção"
+CarregarFerramentas -> CollectionRelease: "5.2. Consultar itens da coleção"
+CarregarFerramentas -> Folder: "5.3. Consultar pastas existentes"
+CarregarFerramentas -> Tag: "5.4. Consultar tags existentes"
+Collection -> CarregarFerramentas: "5.5. Retornar dados da coleção"
+CollectionRelease -> CarregarFerramentas: "5.6. Retornar itens da coleção"
+Folder -> CarregarFerramentas: "5.7. Retornar pastas existentes"
+Tag -> CarregarFerramentas: "5.8. Retornar tags existentes"
+CarregarFerramentas -> TelaColecao: "6. Exibir ferramentas de organização"
+TelaColecao -> Usuario: "7. Mostrar opções de organização"
+Usuario -> CriarPasta: "8.1. Criar nova pasta (opcional)"
+CriarPasta -> Folder: "8.2. Salvar nova pasta"
+Usuario -> CriarTag: "9.1. Criar nova tag (opcional)"
+CriarTag -> Tag: "9.2. Salvar nova tag"
+Usuario -> AdicionarAnotacao: "10.1. Adicionar anotação (opcional)"
+AdicionarAnotacao -> CollectionRelease: "10.2. Salvar anotação"
+Usuario -> MoverParaPasta: "11.1. Mover item para pasta (opcional)"
+MoverParaPasta -> CollectionReleaseFolder: "11.2. Atualizar associação item-pasta"
+Usuario -> AplicarTag: "12.1. Aplicar tag ao item (opcional)"
+AplicarTag -> TagRelationship: "12.2. Salvar associação item-tag"
+Usuario -> ConfigurarWidgets: "13.1. Configurar widgets de visualização (opcional)"
+ConfigurarWidgets -> Collection: "13.2. Salvar configurações de widgets"
+Usuario -> SalvarOrganizacao: "14. Finalizar organização"
+SalvarOrganizacao -> AtualizarVisualizacao: "15. Solicitar atualização"
+AtualizarVisualizacao -> TelaColecao: "16. Atualizar visualização da coleção"
+TelaColecao -> Usuario: "17. Exibir coleção organizada"
